@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dhruv Gohel – Portfolio</title>
+  <meta name="description" content="Designer/Developer portfolio showcasing selected projects, skills, and contact." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind config for custom animations -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            'gradient-move': {
+              '0%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' },
+              '100%': { backgroundPosition: '0% 50%' },
+            },
+            'float-slow': {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-6px)' },
+            },
+            'fade-up': {
+              '0%': { opacity: '0', transform: 'translateY(12px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+          animation: {
+            'gradient-move': 'gradient-move 16s ease-in-out infinite',
+            'float-slow': 'float-slow 6s ease-in-out infinite',
+            'fade-up': 'fade-up .7s ease-out both',
+          },
+          boxShadow: {
+            glow: '0 0 40px rgba(110,231,183,.15), inset 0 0 60px rgba(30,64,175,.12)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Extra painterly background layer using conic gradient + blur */
+    .bg-ink {
+      background:
+        radial-gradient(1200px 600px at 20% 120%, rgba(30, 64, 175, .28), transparent 60%),
+        radial-gradient(900px 500px at 85% -10%, rgba(16, 185, 129, .25), transparent 60%),
+        conic-gradient(from 180deg at 50% 50%, #0b0d10 0deg, #0f172a 120deg, #0b0d10 240deg, #0b0d10 360deg);
+      filter: saturate(1.05);
+    }
+
+    .clip-hex {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-black text-slate-100 antialiased selection:bg-emerald-300/20 selection:text-emerald-200">
+  <!-- Animated background layers -->
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <!-- Moving gradient wash -->
+    <div class="absolute inset-0 bg-[length:300%_300%] animate-gradient-move bg-gradient-to-br from-slate-900 via-slate-800 to-black opacity-70"></div>
+    <!-- Soft conic/radial glows -->
+    <div class="absolute inset-0 bg-ink blur-3xl opacity-60"></div>
+    <!-- Floating bokeh orbs -->
+    <div class="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-emerald-400/10 blur-2xl animate-float-slow"></div>
+    <div class="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-indigo-400/10 blur-2xl animate-float-slow" style="animation-delay:1.2s"></div>
+  </div>
+
+  <!-- Page container -->
+  <header class="sticky top-0 z-20 backdrop-blur supports-[backdrop-filter]:bg-black/30 border-b border-white/5">
+    <div class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+      <div class="font-extrabold tracking-normal text-xl">Dhruv Gohel</div>
+      <nav class="hidden sm:flex items-center gap-6 text-slate-300">
+        <a href="#work" class="hover:text-white transition-colors">Work</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-6">
+    <!-- Hero -->
+    <section class="py-16 sm:py-24">
+      <div class="grid gap-10 md:grid-cols-2 items-center">
+        <!-- Profile Image -->
+        <div class="order-2 md:order-1 animate-fade-up">
+          <div class="relative w-[350px] h-[350px] mx-auto md:mx-0">
+            <div class="clip-hex overflow-hidden">
+              <img 
+                src="profile.jpg" 
+                alt="Dhruv Gohel" 
+                class="w-full h-full object-cover border-4 border-emerald-400/20 shadow-glow"
+              >
+            </div>
+            <div class="absolute -inset-0.5 clip-hex bg-gradient-to-br from-emerald-400 to-cyan-400 opacity-20 blur"></div>
+          </div>
+        </div>
+
+        <!-- Text Content -->
+        <div class="order-1 md:order-2 animate-fade-up">
+          <span class="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-300 shadow-glow">
+            Computer Science Student
+          </span>
+          <h1 class="mt-4 text-4xl sm:text-5xl font-extrabold leading-tight">
+            Aspiring Computer Science Engineer focused on Data Science
+          </h1>
+          <p class="mt-3 text-slate-300/80 max-w-prose">
+            Advanced Python skills with libraries for analysis. Proficient in Java, C, and web development. Leadership experience in event coordination and team projects.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contact" class="inline-flex items-center rounded-lg bg-emerald-400 text-black font-semibold px-5 py-3 hover:brightness-95 active:brightness-90 transition focus:outline-none focus:ring-2 focus:ring-emerald-300">
+              Contact Me
+            </a>
+            <a href="#work" class="inline-flex items-center rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-slate-100 hover:bg-white/10 transition">
+              View Projects
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- About -->
+    <section id="about" class="py-12 border-t border-white/5">
+      <h2 class="text-2xl font-semibold">About</h2>
+      <p class="mt-1 text-slate-300/80">Computer Science student with strong programming skills and leadership experience.</p>
+      <div class="mt-6 grid gap-5 sm:grid-cols-2">
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4 animate-fade-up">
+          <h3 class="font-semibold">Skills</h3>
+          <p class="text-slate-300/80">
+            Frontend: HTML5, CSS3, JavaScript, Tailwind CSS, Bootstrap<br>
+            Backend: Python, Flask, Django, RESTful APIs<br>
+            Databases: SQLite, PostgreSQL<br>
+            Tools: Git, GitHub, VS Code, Postman
+          </p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4 animate-fade-up [animation-delay:.05s]">
+          <h3 class="font-semibold">Education</h3>
+          <p class="text-slate-300/80">
+            B.Tech in Computer Engineering<br>
+            Gujarat Technological University<br>
+            3rd Semester | Expected Graduation: 2028
+          </p>
+        </div>
+      </div>
+      
+      <!-- Add Certifications -->
+      <div class="mt-6">
+        <h3 class="font-semibold mb-3">Certifications</h3>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+            <p class="font-medium">Oracle Data Platform Foundations Associate</p>
+            <p class="text-sm text-slate-300/80">Covers cloud data management and analytics</p>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+            <p class="font-medium">NPTEL Swayam: Programming in Java</p>
+            <p class="text-sm text-slate-300/80">Score: 85%</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Experience Section -->
+      <section id = "work", class="py-12 border-t border-white/5">
+        <h2 class="text-2xl font-semibold">Project Experience</h2>
+        <div class="mt-6 grid gap-6">
+          <!-- ReWear Project -->
+          <div class="rounded-xl border border-white/10 bg-white/5 p-6 animate-fade-up">
+            <h3 class="text-xl font-semibold">ReWear – Community Clothing Exchange</h3>
+            <p class="text-sm text-emerald-300 mt-1">Odoo Hackathon '25</p>
+            <div class="mt-3 space-y-2 text-slate-300/80">
+              <p>• Led development of a Flask-based swap platform enabling users to list and exchange pre-loved apparel via a points-driven economy.</p>
+              <p>• Designed secure authentication and role-based access (Flask-Login) with admin approval workflows.</p>
+              <p>• Implemented item listings with images, categories, filters, keyword search, and email notifications (Flask-Mail).</p>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded-full bg-emerald-400/15 text-emerald-200 px-2 py-1 text-xs border border-emerald-400/20">Flask</span>
+              <span class="rounded-full bg-indigo-400/15 text-indigo-200 px-2 py-1 text-xs border border-indigo-400/20">Python</span>
+              <span class="rounded-full bg-cyan-400/15 text-cyan-200 px-2 py-1 text-xs border border-cyan-400/20">SQL</span>
+            </div>
+          </div>
+
+          <!-- COSO Project -->
+          <div class="rounded-xl border border-white/10 bg-white/5 p-6 animate-fade-up [animation-delay:.05s]">
+            <h3 class="text-xl font-semibold">COSO – College Social Platform</h3>
+            <div class="mt-3 space-y-2 text-slate-300/80">
+              <p>• Developed a Django application featuring custom user roles for students and admins, email-based registration, and approval workflows.</p>
+              <p>• Built RESTful APIs for event management and campus posts using Django REST Framework.</p>
+              <p>• Crafted responsive UIs with HTML, CSS, JavaScript, and Tailwind CSS; handled CORS, file uploads, and session-based authentication.</p>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded-full bg-emerald-400/15 text-emerald-200 px-2 py-1 text-xs border border-emerald-400/20">Django</span>
+              <span class="rounded-full bg-indigo-400/15 text-indigo-200 px-2 py-1 text-xs border border-indigo-400/20">REST API</span>
+              <span class="rounded-full bg-cyan-400/15 text-cyan-200 px-2 py-1 text-xs border border-cyan-400/20">Tailwind</span>
+            </div>
+          </div>
+
+          <!-- Falak Al Buraimi Project -->
+          <div class="rounded-xl border border-white/10 bg-white/5 p-6 animate-fade-up [animation-delay:.1s]">
+            <h3 class="text-xl font-semibold">Falak Al Buraimi Beauty Saloon Website</h3>
+            <div class="mt-3 space-y-2 text-slate-300/80">
+              <p>• Created a static marketing site using HTML5, CSS3, and JavaScript, featuring animated countdown offers and card-style layouts.</p>
+              <p>• Integrated Google Maps iframe for easy salon location, implemented client-side form validation, and polished UX with CSS animations.</p>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded-full bg-emerald-400/15 text-emerald-200 px-2 py-1 text-xs border border-emerald-400/20">HTML5</span>
+              <span class="rounded-full bg-indigo-400/15 text-indigo-200 px-2 py-1 text-xs border border-indigo-400/20">CSS3</span>
+              <span class="rounded-full bg-cyan-400/15 text-cyan-200 px-2 py-1 text-xs border border-cyan-400/20">JavaScript</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leadership & Achievements Section -->
+      <section class="py-12 border-t border-white/5">
+        <h2 class="text-2xl font-semibold">Leadership & Achievements</h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+            <h3 class="font-semibold">Leadership</h3>
+            <ul class="mt-2 space-y-2 text-slate-300/80">
+              <li>• Team Leader, "Quantum Coders" at Odoo Hackathon 2025</li>
+              <li>• Volunteer Mentor for Peer Coding Workshops</li>
+              <li>• Winner, Intercollegiate Web Development Contest 2024</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+            <h3 class="font-semibold">Personal Attributes</h3>
+            <ul class="mt-2 space-y-2 text-slate-300/80">
+              <li>• Quick learner with strong problem-solving abilities</li>
+              <li>• Collaborative team player experienced in Agile workflows</li>
+              <li>• Passionate about sustainable technology and community impact</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-12 border-t border-white/5">
+      <h2 class="text-2xl font-semibold">Contact</h2>
+      <p class="mt-1 text-slate-300/80">Prefer email? That works great. Calendly link optional.</p>
+      <div class="mt-6 grid gap-5 sm:grid-cols-2">
+        <form class="rounded-xl border border-white/10 bg-white/5 p-4 animate-fade-up" name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" />
+          <label class="block text-sm">Name
+            <input name="name" required class="mt-1 w-full rounded-lg border border-white/10 bg-black/30 px-3 py-2 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Alex Doe">
+          </label>
+          <label class="mt-3 block text-sm">Email
+            <input type="email" name="email" required class="mt-1 w-full rounded-lg border border-white/10 bg-black/30 px-3 py-2 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="alex@example.com">
+          </label>
+          <label class="mt-3 block text-sm">Message
+            <textarea name="message" rows="5" required class="mt-1 w-full rounded-lg border border-white/10 bg-black/30 px-3 py-2 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Say hello…"></textarea>
+          </label>
+          <button class="mt-4 inline-flex items-center rounded-lg bg-emerald-400 text-black font-semibold px-5 py-2.5 hover:brightness-95 active:brightness-90 transition focus:outline-none focus:ring-2 focus:ring-emerald-300" type="submit">Send</button>
+        </form>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4 animate-fade-up [animation-delay:.05s]">
+          <h3 class="font-semibold">Contact Details</h3>
+          <p class="text-slate-300/80">
+            <a href="tel:9924885705" class="hover:text-white transition">+91 99248 85705</a><br>
+            <a href="mailto:Dhruvgohel460@gmail.com" class="hover:text-white transition">Dhruvgohel460@gmail.com</a><br>
+            <a href="https://www.linkedin.com/in/dhruv-gohel-220194322" target="_blank" rel="noopener" class="hover:text-white transition">LinkedIn Profile</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mx-auto max-w-6xl px-6 py-8 text-slate-400">
+    <small>© <span id="y"></span> Dhruv Gohel. All rights reserved.</small>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  
+</body>
+</html>
