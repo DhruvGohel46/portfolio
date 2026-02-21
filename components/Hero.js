@@ -158,7 +158,7 @@ export default function Hero() {
                 style={{
                   borderRadius: '50%',
                   objectFit: 'cover',
-                  objectPosition: 'center center',
+                  objectPosition: '50% 15%',
                   border: '2px solid rgba(99,102,241,0.25)',
                   display: 'block',
                 }}
