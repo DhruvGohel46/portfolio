@@ -10,12 +10,12 @@ const CURRENT_PROJECTS = [
         tech: ['React', 'Flask', 'SQLite', 'Electron'],
     },
     {
-        name: 'Fredro',
-        tagline: 'Franchise expansion & management platform',
-        stage: 'Building MVP',
+        name: 'QRail',
+        tagline: 'QR-based asset tracking for Indian Railways',
+        stage: 'In Development',
         stageColor: '#6366f1',
-        desc: 'Helping franchise brands manage multiple outlets, standardize operations, and track performance across locations from one dashboard.',
-        tech: ['Next.js', 'Django', 'PostgreSQL'],
+        desc: 'AI-powered railway asset management system — field staff scan QR codes to log maintenance, with Ollama LLM auto-standardizing records into structured fault data.',
+        tech: ['Flask', 'React', 'Next.js', 'Ollama AI', 'Python'],
     },
 ];
 
