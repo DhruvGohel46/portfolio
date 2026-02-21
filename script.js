@@ -1,196 +1,180 @@
-// Register ScrollTrigger plugin
+/* ===================================================
+   Dhruv Gohel Portfolio — Script
+   Animations: GSAP + IntersectionObserver
+   =================================================== */
+
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero text reveal animation
-const tl = gsap.timeline();
+/* ---- 1. Navbar: transparent → frosted on scroll ---- */
+window.addEventListener('scroll', () => {
+    document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
 
-tl.to('.reveal-text', {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    stagger: 0.3,
-    ease: 'power2.out'
+/* ---- 2. Hero reveal ---- */
+const heroTL = gsap.timeline({ delay: 0.2 });
+
+heroTL
+    .to('.hero-title .reveal-text', {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        stagger: 0.18,
+        ease: 'power3.out',
+    })
+    .to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4')
+    .to('.hero-badges', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3')
+    .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+
+/* ---- 3. Smooth scroll for nav links ---- */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 });
 
-// Skills animation
-gsap.set('.skill-item', { opacity: 0, x: -50 });
+/* ---- 4. Skill bars — fill on scroll enter ---- */
+const skillsSection = document.querySelector('.skills');
+if (skillsSection) {
+    const io = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
 
-ScrollTrigger.create({
-    trigger: '.skills',
-    start: 'top 70%',
-    onEnter: () => {
-        gsap.to('.skill-item', {
+        // Reveal skill category cards
+        gsap.to('.skill-category', {
             opacity: 1,
-            x: 0,
+            y: 0,
             duration: 0.6,
             stagger: 0.1,
-            ease: 'power2.out'
+            ease: 'power2.out',
         });
-        
-        // Animate skill bars
-        document.querySelectorAll('.skill-progress').forEach((bar) => {
-            const width = bar.getAttribute('data-width');
-            gsap.to(bar, {
-                width: width + '%',
-                duration: 1.5,
-                delay: 0.5,
-                ease: 'power2.out'
-            });
+
+        // Animate progress bars
+        document.querySelectorAll('.skill-progress').forEach(bar => {
+            const target = bar.getAttribute('data-width') + '%';
+            gsap.to(bar, { width: target, duration: 1.4, delay: 0.3, ease: 'power2.out' });
         });
-    }
-});
 
-// Projects stacking animation
-const projectCards = document.querySelectorAll('.project-card');
-let currentProject = 0;
+        // Update percentage text live (optional bonus)
+        document.querySelectorAll('.skill-item').forEach(item => {
+            const pct = item.querySelector('.skill-progress')?.getAttribute('data-width');
+            const pctEl = item.querySelector('.skill-pct');
+            if (pct && pctEl) pctEl.textContent = pct + '%';
+        });
 
-// Initialize first project as active
-if (projectCards.length > 0) {
-    projectCards[0].classList.add('active');
+    }, { threshold: 0.2 });
+    io.observe(skillsSection);
 }
 
-ScrollTrigger.create({
-    trigger: '.projects',
-    start: 'top 50%',
-    end: 'bottom 20%',
-    scrub: 1,
-    onUpdate: (self) => {
-        const progress = self.progress;
-        const newProject = Math.floor(progress * (projectCards.length - 1));
-        
-        if (newProject !== currentProject && newProject < projectCards.length) {
-            // Remove active class from all cards
-            projectCards.forEach(card => card.classList.remove('active'));
-            
-            // Add active class to current card
-            projectCards[newProject].classList.add('active');
-            
-            // Stack previous cards
-            for (let i = 0; i <= newProject; i++) {
-                gsap.set(projectCards[i], {
-                    y: i * 20,
-                    scale: 1 - (i * 0.05),
-                    zIndex: projectCards.length - i
-                });
-            }
-            
-            currentProject = newProject;
-        }
-    }
-});
+/* ---- 5. Project cards — stagger fade-up ---- */
+const projectCards = document.querySelectorAll('.project-card');
+if (projectCards.length) {
+    const io = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        gsap.to('.project-card', {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power2.out',
+        });
+    }, { threshold: 0.1 });
+    io.observe(document.querySelector('.projects'));
+}
 
-// Timeline animation
-gsap.set('.timeline-item', { opacity: 0, x: -50 });
-
-ScrollTrigger.create({
-    trigger: '.timeline',
-    start: 'top 70%',
-    onEnter: () => {
+/* ---- 6. About section ---- */
+const aboutSection = document.querySelector('.about');
+if (aboutSection) {
+    const io = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        gsap.to('.about-inner > *', {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.2,
+            ease: 'power2.out',
+        });
+        gsap.set('.about-inner > *', { opacity: 0, y: 30 });
+        gsap.to('.about-inner > *', {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.18,
+            ease: 'power2.out',
+        });
         gsap.to('.timeline-item', {
             opacity: 1,
             x: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'power2.out'
+            duration: 0.6,
+            delay: 0.3,
+            ease: 'power2.out',
         });
-    }
-});
+    }, { threshold: 0.15 });
+    io.observe(aboutSection);
+}
 
-// About section animation
-gsap.set('.about-content > *', { opacity: 0, y: 50 });
-
-ScrollTrigger.create({
-    trigger: '.about',
-    start: 'top 70%',
-    onEnter: () => {
-        gsap.to('.about-content > *', {
+/* ---- 7. Achievements timeline ---- */
+const achievementsSection = document.querySelector('.achievements');
+if (achievementsSection) {
+    const io = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        gsap.to('.achievements .timeline-item', {
             opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'power2.out'
+            x: 0,
+            duration: 0.7,
+            stagger: 0.15,
+            ease: 'power2.out',
         });
-    }
-});
+    }, { threshold: 0.15 });
+    io.observe(achievementsSection);
+}
 
-// Contact section animation
-gsap.set('.contact-item', { opacity: 0, y: 50 });
-
-ScrollTrigger.create({
-    trigger: '.contact',
-    start: 'top 70%',
-    onEnter: () => {
+/* ---- 8. Contact items ---- */
+const contactSection = document.querySelector('.contact');
+if (contactSection) {
+    const io = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
         gsap.to('.contact-item', {
             opacity: 1,
             y: 0,
             duration: 0.6,
             stagger: 0.1,
-            ease: 'power2.out'
+            ease: 'power2.out',
         });
-    }
+    }, { threshold: 0.2 });
+    io.observe(contactSection);
+}
+
+/* ---- 9. Section titles batch reveal ---- */
+ScrollTrigger.batch('.section-title', {
+    onEnter: els => gsap.from(els, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power2.out',
+    }),
 });
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            gsap.to(window, {
-                duration: 1,
-                scrollTo: { y: target, offsetY: 80 },
-                ease: 'power2.inOut'
-            });
-        }
-    });
-});
-
-// Navbar background on scroll
-ScrollTrigger.create({
-    start: 'top -80',
-    end: 99999,
-    toggleClass: { className: 'scrolled', targets: '.navbar' }
-});
-
-// Add CSS for scrolled navbar
-const style = document.createElement('style');
-style.textContent = `
-    .navbar.scrolled {
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    }
-`;
-document.head.appendChild(style);
-
-// Parallax effect for hero section
+/* ---- 10. Hero scroll parallax ---- */
 ScrollTrigger.create({
     trigger: '.hero',
     start: 'top top',
     end: 'bottom top',
-    scrub: 1,
-    onUpdate: (self) => {
-        const progress = self.progress;
+    scrub: 1.2,
+    onUpdate: self => {
         gsap.set('.hero-content', {
-            y: progress * 200,
-            opacity: 1 - progress * 0.5
+            y: self.progress * 120,
+            opacity: 1 - self.progress * 0.6,
         });
-    }
+    },
 });
 
-// Add scroll-triggered class animations
-ScrollTrigger.batch('.section-title', {
-    onEnter: (elements) => {
-        gsap.from(elements, {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            stagger: 0.1,
-            ease: 'power2.out'
-        });
-    }
-});
-
-// Refresh ScrollTrigger on window resize
-window.addEventListener('resize', () => {
-    ScrollTrigger.refresh();
-});
+/* ---- 11. Responsive refresh ---- */
+window.addEventListener('resize', () => ScrollTrigger.refresh(), { passive: true });
