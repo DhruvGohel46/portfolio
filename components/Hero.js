@@ -5,7 +5,7 @@ export default function Hero() {
     <section
       id="hero"
       style={{
-        minHeight: '100vh',
+        minHeight: '70vh',
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
@@ -31,11 +31,11 @@ export default function Hero() {
 
       <div
         className="container"
-        style={{ paddingTop: '6rem', paddingBottom: '4rem', width: '100%' }}
+        style={{ paddingTop: ' 6rem', paddingBottom: '6rem', width: '100%' }}
       >
         {/* Two-column grid */}
         <div className="hero-grid">
-
+        
           {/* ── LEFT: Text ── */}
           <div className="hero-text">
             {/* Availability badge */}
@@ -56,7 +56,7 @@ export default function Hero() {
 
             {/* Main headline */}
             <h1 style={{
-              fontSize: 'clamp(2.6rem, 6vw, 4.2rem)',
+              fontSize: 'clamp(2.2rem, 6vw, 4.2rem)',
               fontWeight: 900,
               lineHeight: 1.05,
               letterSpacing: '-0.04em',
@@ -73,9 +73,9 @@ export default function Hero() {
                 Dhruv Gohel.
               </span>
               <br />
-              I build web apps that
+              Building intelligent, data-driven,
               <br />
-              solve real problems.
+              and secure solutions for the future.
             </h1>
 
             {/* Subheadline */}

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 
 const STATS = [
-  { value: '6+', label: 'Projects Built' },
-  { value: '1st', label: 'Hackathon Win' },
+  { value: '10+', label: 'Projects Built' },
+  { value: '3', label: 'Hackathon Finalist' },
   { value: '3', label: 'Certifications' },
   { value: '2+', label: 'Years Coding' },
 ];
