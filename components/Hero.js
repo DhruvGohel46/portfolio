@@ -35,7 +35,7 @@ export default function Hero() {
       >
         {/* Two-column grid */}
         <div className="hero-grid">
-        
+
           {/* ── LEFT: Text ── */}
           <div className="hero-text">
             {/* Availability badge */}

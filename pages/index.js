@@ -28,10 +28,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Dhruv Gohel — Full-Stack Developer & UI Engineer</title>
+        <title>Dhruv Gohel</title>
         <meta name="description" content="Computer Engineering student from Ahmedabad building real-world web applications. Open to internships, freelance, and collaboration." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="Dhruv Gohel — Full-Stack Developer" />
+        <meta property="og:title" content="Dhruv Gohel" />
         <meta property="og:description" content="I build web apps that solve real business problems. View my work →" />
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
