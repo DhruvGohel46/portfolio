@@ -130,141 +130,147 @@ export default function Hackathons() {
                         return (
                             <motion.div
                                 key={project.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className={`glass-card border overflow-hidden transition-all duration-500 relative bg-[#0B0F19]/60 backdrop-blur-xl
-                  ${isExpanded ? 'border-white/30 shadow-[0_0_40px_rgba(79,70,229,0.15)]' : 'border-white/10 hover:border-white/20 hover:bg-white/5 cursor-pointer'}`}
+                                transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+                                className={`relative p-[1px] rounded-[2.5rem] overflow-hidden group transition-all duration-500 ${!isExpanded ? 'cursor-pointer hover:-translate-y-1 hover:shadow-[0_8px_40px_rgba(255,255,255,0.05)]' : 'shadow-[0_8px_40px_rgba(79,70,229,0.15)]'}`}
                                 onClick={() => !isExpanded && setExpandedId(project.id)}
                             >
-                                <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl ${project.color} to-transparent rounded-bl-full opacity-0 transition-opacity duration-700 blur-3xl ${isExpanded ? 'opacity-40' : 'group-hover:opacity-20'}`}></div>
+                                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} to-white/5 transition-opacity duration-700 blur-[2px] ${isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></div>
 
-                                {/* Header (Always Visible) */}
-                                <div className="p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-                                    <div className="flex items-start gap-5">
-                                        <div className={`w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-lg ${isExpanded ? 'bg-white/10 border-white/20' : ''}`}>
-                                            {project.icon}
-                                        </div>
-                                        <div>
-                                            <div className="flex flex-wrap items-center gap-3 mb-2">
-                                                <h3 className="text-2xl font-bold text-white tracking-wide">{project.title}</h3>
-                                                <span className="px-3 py-1 bg-indigo-500/10 border border-indigo-500/30 rounded-full text-indigo-300 text-xs font-bold tracking-wider uppercase backdrop-blur-sm">
-                                                    {project.badge}
-                                                </span>
+                                <div className={`relative bg-[#0B0F19]/80 backdrop-blur-2xl rounded-[2.5rem] border transition-all duration-500 overflow-hidden flex flex-col z-10 
+                                    ${isExpanded ? 'border-white/30 bg-[#0B0F19]/90' : 'border-white/10 group-hover:border-white/20'}`}>
+
+                                    <div className={`absolute -right-20 -top-20 w-80 h-80 bg-gradient-to-bl ${project.color} to-transparent rounded-full transition-all duration-700 blur-[80px] pointer-events-none ${isExpanded ? 'opacity-40 scale-125' : 'opacity-20 group-hover:opacity-50 group-hover:scale-150'}`}></div>
+                                    <div className={`absolute -left-20 -bottom-20 w-80 h-80 bg-gradient-to-tr ${project.color} to-transparent rounded-full transition-all duration-700 blur-[80px] pointer-events-none ${isExpanded ? 'opacity-30 scale-125' : 'opacity-0 group-hover:opacity-30 group-hover:scale-150'}`}></div>
+
+                                    {/* Header (Always Visible) */}
+                                    <div className="p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+                                        <div className="flex items-start gap-5">
+                                            <div className={`w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-inner transition-all duration-500 relative ${isExpanded ? 'bg-white/10 border-white/20 scale-110' : 'group-hover:scale-110'}`}>
+                                                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} to-transparent opacity-20 rounded-full blur-md`}></div>
+                                                <div className="relative z-10">{project.icon}</div>
                                             </div>
-                                            <p className="text-gray-400 text-sm leading-relaxed max-w-3xl line-clamp-1 md:line-clamp-none">
-                                                {isExpanded ? '' : project.problem}
-                                            </p>
+                                            <div>
+                                                <div className="flex flex-wrap items-center gap-3 mb-2">
+                                                    <h3 className="text-2xl font-bold text-white tracking-wide transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400">{project.title}</h3>
+                                                    <span className="px-4 py-1.5 bg-indigo-500/10 border border-indigo-500/30 rounded-full text-indigo-300 text-xs font-bold tracking-wider uppercase backdrop-blur-md shadow-sm">
+                                                        {project.badge}
+                                                    </span>
+                                                </div>
+                                                <p className="text-gray-400 text-sm leading-relaxed max-w-3xl line-clamp-1 md:line-clamp-none transition-colors duration-500 group-hover:text-gray-300">
+                                                    {isExpanded ? '' : project.problem}
+                                                </p>
+                                            </div>
                                         </div>
+
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setExpandedId(isExpanded ? null : project.id);
+                                            }}
+                                            className={`shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/5 border transition-all duration-300 ${isExpanded ? 'rotate-180 bg-white/10 border-white/30 text-white shadow-[0_0_20px_rgba(255,255,255,0.1)]' : 'border-white/10 text-gray-400 hover:bg-white/20 hover:scale-110'}`}
+                                        >
+                                            <ChevronDown size={20} />
+                                        </button>
                                     </div>
 
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setExpandedId(isExpanded ? null : project.id);
-                                        }}
-                                        className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 transition-all ${isExpanded ? 'rotate-180 bg-white/10 border-white/30 text-white' : 'text-gray-400'}`}
-                                    >
-                                        <ChevronDown size={20} />
-                                    </button>
-                                </div>
+                                    {/* Expanded Details Content */}
+                                    <AnimatePresence>
+                                        {isExpanded && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                                className="overflow-hidden border-t border-white/5"
+                                            >
+                                                <div className="p-6 md:p-8 md:pt-6 pt-0 relative z-10">
+                                                    <div className="grid lg:grid-cols-3 gap-10">
 
-                                {/* Expanded Details Content */}
-                                <AnimatePresence>
-                                    {isExpanded && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "auto", opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.4, ease: "easeInOut" }}
-                                            className="overflow-hidden border-t border-white/5"
-                                        >
-                                            <div className="p-6 md:p-8 md:pt-6 pt-0 relative z-10">
-                                                <div className="grid lg:grid-cols-3 gap-10">
-
-                                                    {/* Left Column: Problem & Solution */}
-                                                    <div className="lg:col-span-2 space-y-8">
-                                                        <div>
-                                                            <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-3">The Problem</h4>
-                                                            <p className="text-gray-300 leading-relaxed text-lg">{project.problem}</p>
-                                                        </div>
-                                                        <div>
-                                                            <h4 className="text-sm font-bold text-indigo-400 uppercase tracking-widest mb-3">Engineered Solution</h4>
-                                                            <p className="text-white font-medium leading-relaxed text-lg bg-gradient-to-r from-indigo-500/10 to-transparent p-5 rounded-xl border border-indigo-500/20">
-                                                                {project.solution}
-                                                            </p>
-                                                        </div>
-
-                                                        {/* Architecture/Stack List */}
-                                                        {(project.architecture || project.stack || project.tech) && (
+                                                        {/* Left Column: Problem & Solution */}
+                                                        <div className="lg:col-span-2 space-y-8">
                                                             <div>
-                                                                <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                                                                    <Server size={14} /> Core Architecture & Stack
+                                                                <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-3">The Problem</h4>
+                                                                <p className="text-gray-300 leading-relaxed text-lg">{project.problem}</p>
+                                                            </div>
+                                                            <div>
+                                                                <h4 className="text-sm font-bold text-indigo-400 uppercase tracking-widest mb-3">Engineered Solution</h4>
+                                                                <p className="text-white font-medium leading-relaxed text-lg bg-gradient-to-r from-indigo-500/10 to-transparent p-5 rounded-xl border border-indigo-500/20">
+                                                                    {project.solution}
+                                                                </p>
+                                                            </div>
+
+                                                            {/* Architecture/Stack List */}
+                                                            {(project.architecture || project.stack || project.tech) && (
+                                                                <div>
+                                                                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                                                        <Server size={14} /> Core Architecture & Stack
+                                                                    </h4>
+                                                                    <div className="grid sm:grid-cols-2 gap-3">
+                                                                        {(project.architecture || project.stack || project.tech).map((item, i) => (
+                                                                            <div key={i} className="flex items-start gap-2 text-gray-300">
+                                                                                <span className="text-indigo-500 mt-1">▹</span>
+                                                                                <span className="text-sm md:text-base font-medium">{item}</span>
+                                                                            </div>
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
+                                                            )}
+
+                                                            {/* My Contribution specific */}
+                                                            {project.roleInfo && (
+                                                                <div>
+                                                                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-3">My Contribution</h4>
+                                                                    <p className="text-gray-300 leading-relaxed text-base border-l-2 border-indigo-500/50 pl-4">{project.roleInfo}</p>
+                                                                </div>
+                                                            )}
+                                                        </div>
+
+                                                        {/* Right Column: Metrics & CTA */}
+                                                        <div className="flex flex-col gap-6">
+                                                            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                                                                <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-5 flex items-center gap-2">
+                                                                    <Activity size={16} className="text-emerald-400" /> Impact Metrics
                                                                 </h4>
-                                                                <div className="grid sm:grid-cols-2 gap-3">
-                                                                    {(project.architecture || project.stack || project.tech).map((item, i) => (
-                                                                        <div key={i} className="flex items-start gap-2 text-gray-300">
-                                                                            <span className="text-indigo-500 mt-1">▹</span>
-                                                                            <span className="text-sm md:text-base font-medium">{item}</span>
+                                                                <div className="flex flex-col gap-3">
+                                                                    {project.metrics.map((metric, i) => (
+                                                                        <div key={i} className="flex items-center gap-3 bg-[#0B0F19] p-3 rounded-lg border border-white/5">
+                                                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                                                                            <span className="text-gray-200 text-sm font-bold tracking-wide">{metric}</span>
                                                                         </div>
                                                                     ))}
                                                                 </div>
                                                             </div>
-                                                        )}
 
-                                                        {/* My Contribution specific */}
-                                                        {project.roleInfo && (
-                                                            <div>
-                                                                <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-3">My Contribution</h4>
-                                                                <p className="text-gray-300 leading-relaxed text-base border-l-2 border-indigo-500/50 pl-4">{project.roleInfo}</p>
-                                                            </div>
-                                                        )}
-                                                    </div>
+                                                            {/* CTA Links */}
+                                                            <div className="mt-auto pt-4 flex flex-col gap-3">
+                                                                {project.ctaLink && (
+                                                                    <a href={project.ctaLink} target="_blank" rel="noopener noreferrer" className="w-full bg-white text-black px-6 py-4 rounded-xl font-bold flex items-center justify-between hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] group">
+                                                                        <span className="flex items-center gap-2"><Github size={18} /> {project.ctaText}</span>
+                                                                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                                                    </a>
+                                                                )}
 
-                                                    {/* Right Column: Metrics & CTA */}
-                                                    <div className="flex flex-col gap-6">
-                                                        <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                                                            <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-5 flex items-center gap-2">
-                                                                <Activity size={16} className="text-emerald-400" /> Impact Metrics
-                                                            </h4>
-                                                            <div className="flex flex-col gap-3">
-                                                                {project.metrics.map((metric, i) => (
-                                                                    <div key={i} className="flex items-center gap-3 bg-[#0B0F19] p-3 rounded-lg border border-white/5">
-                                                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
-                                                                        <span className="text-gray-200 text-sm font-bold tracking-wide">{metric}</span>
+                                                                {project.links && (
+                                                                    <div className="grid grid-cols-2 gap-3">
+                                                                        {project.links.map((link, i) => (
+                                                                            <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="glass-card py-3 px-4 flex items-center justify-center gap-2 text-sm font-bold text-white hover:bg-white/10 transition-colors border-white/10">
+                                                                                {link.text} {link.url !== '#' && <ExternalLink size={14} />}
+                                                                            </a>
+                                                                        ))}
                                                                     </div>
-                                                                ))}
+                                                                )}
                                                             </div>
                                                         </div>
 
-                                                        {/* CTA Links */}
-                                                        <div className="mt-auto pt-4 flex flex-col gap-3">
-                                                            {project.ctaLink && (
-                                                                <a href={project.ctaLink} target="_blank" rel="noopener noreferrer" className="w-full bg-white text-black px-6 py-4 rounded-xl font-bold flex items-center justify-between hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] group">
-                                                                    <span className="flex items-center gap-2"><Github size={18} /> {project.ctaText}</span>
-                                                                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                                                                </a>
-                                                            )}
-
-                                                            {project.links && (
-                                                                <div className="grid grid-cols-2 gap-3">
-                                                                    {project.links.map((link, i) => (
-                                                                        <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="glass-card py-3 px-4 flex items-center justify-center gap-2 text-sm font-bold text-white hover:bg-white/10 transition-colors border-white/10">
-                                                                            {link.text} {link.url !== '#' && <ExternalLink size={14} />}
-                                                                        </a>
-                                                                    ))}
-                                                                </div>
-                                                            )}
-                                                        </div>
                                                     </div>
-
                                                 </div>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
                             </motion.div>
                         );
                     })}

@@ -93,21 +93,28 @@ export default function InternshipSection() {
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="glass-card p-8 group hover:-translate-y-1 hover:border-white/20 transition-all duration-300 relative overflow-hidden flex flex-col h-full cursor-default"
+                            transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+                            className="relative p-[1px] rounded-[2.5rem] overflow-hidden group cursor-default"
                         >
-                            <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${project.color} to-transparent rounded-bl-full opacity-20 group-hover:opacity-40 transition-opacity blur-2xl`}></div>
+                            <div className={`absolute inset-0 bg-gradient-to-br ${project.color} to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[2px]`}></div>
 
-                            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10">
-                                {project.icon}
+                            <div className="relative h-full bg-[#0B0F19]/80 backdrop-blur-2xl p-8 rounded-[2.5rem] border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_40px_rgba(255,255,255,0.05)] hover:-translate-y-1">
+
+                                <div className={`absolute -right-20 -top-20 w-64 h-64 bg-gradient-to-bl ${project.color} to-transparent rounded-full opacity-20 group-hover:opacity-50 transition-all duration-700 blur-[60px] group-hover:scale-150`}></div>
+                                <div className={`absolute -left-20 -bottom-20 w-64 h-64 bg-gradient-to-tr ${project.color} to-transparent rounded-full opacity-0 group-hover:opacity-30 transition-all duration-700 blur-[60px] group-hover:scale-150`}></div>
+
+                                <div className="relative flex items-center justify-center w-14 h-14 bg-white/5 rounded-full border border-white/10 group-hover:bg-white/10 transition-all duration-500 group-hover:scale-110 shadow-inner mb-6">
+                                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} to-transparent opacity-20 rounded-full blur-md`}></div>
+                                    <div className="relative z-10">{project.icon}</div>
+                                </div>
+
+                                <h4 className="text-xl font-bold text-white mb-2 relative z-10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all duration-500">{project.title}</h4>
+                                <p className="text-indigo-300 text-sm font-semibold mb-4 relative z-10 tracking-wide uppercase px-3 py-1 bg-indigo-500/10 rounded-full border border-indigo-500/20 inline-block w-fit">{project.tech}</p>
+                                <p className="text-gray-400 text-sm leading-relaxed relative z-10 flex-1 group-hover:text-gray-300 transition-colors duration-500">{project.desc}</p>
                             </div>
-
-                            <h4 className="text-xl font-bold text-white mb-2 relative z-10">{project.title}</h4>
-                            <p className="text-indigo-300 text-sm font-semibold mb-4 relative z-10 tracking-wide uppercase">{project.tech}</p>
-                            <p className="text-gray-400 text-sm leading-relaxed relative z-10 flex-1">{project.desc}</p>
                         </motion.div>
                     ))}
                 </div>

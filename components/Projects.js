@@ -66,49 +66,60 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`glass-card p-0 overflow-hidden group flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(79,70,229,0.1)] 
-                ${index % 2 !== 0 ? 'md:mt-12' : ''} 
-                ${index === 0 ? 'border-indigo-500/30 ring-1 ring-indigo-500/10' : 'border-white/10 hover:border-white/20'}`}
+              transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+              className={`relative p-[1px] rounded-[2.5rem] overflow-hidden group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(79,70,229,0.1)] ${index % 2 !== 0 ? 'md:mt-12' : ''}`}
             >
-              {index === 0 && (
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-indigo-500/5 to-transparent pointer-events-none z-0"></div>
-              )}
-              <div className="h-48 bg-white/5 relative flex items-center justify-center border-b border-white/10 overflow-hidden z-10 transition-colors duration-500 group-hover:bg-white/10">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] to-transparent z-10 w-full"></div>
-                <div className="text-white/20 font-bold text-2xl md:text-3xl transform group-hover:scale-110 transition-transform duration-700 ease-out px-6 text-center w-full z-0">
-                  {project.title.split('—')[0]}
-                </div>
-              </div>
+              {/* Animated Border Gradient Wrapper */}
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[2px]"></div>
 
-              <div className="p-8 flex-1 flex flex-col z-20 -mt-10">
-                <div className="bg-[#0B0F19] p-4 rounded-xl border border-white/10 shadow-xl mb-4">
-                  <h3 className="text-xl font-bold group-hover:text-indigo-400 transition-colors leading-tight">
-                    {project.title}
-                  </h3>
-                  <p className="text-indigo-300 text-sm mt-2 font-semibold">{project.role}</p>
-                </div>
+              <div className={`relative h-full bg-[#0B0F19]/80 backdrop-blur-2xl rounded-[2.5rem] border group-hover:border-indigo-500/30 transition-all duration-500 overflow-hidden flex flex-col z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+                ${index === 0 ? 'border-indigo-500/30 ring-1 ring-indigo-500/10' : 'border-white/10'}`}>
 
-                <p className="text-gray-400 mb-6 flex-1 text-sm md:text-base leading-relaxed">{project.desc}</p>
+                {/* Deep Ambient Glow */}
+                <div className="absolute -right-20 -top-20 w-64 h-64 bg-gradient-to-bl from-indigo-500/20 to-transparent rounded-full opacity-20 group-hover:opacity-50 transition-all duration-700 blur-[60px] group-hover:scale-150"></div>
+                <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-gradient-to-tr from-indigo-500/20 to-transparent rounded-full opacity-0 group-hover:opacity-30 transition-all duration-700 blur-[60px] group-hover:scale-150"></div>
 
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tech.map((t, i) => (
-                    <span key={i} className="text-xs font-semibold px-3 py-1 bg-white/10 rounded-full text-gray-300">
-                      {t}
-                    </span>
-                  ))}
+                {index === 0 && (
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-indigo-500/5 to-transparent pointer-events-none z-0"></div>
+                )}
+
+                <div className="h-48 bg-white/5 relative flex items-center justify-center border-b border-white/10 overflow-hidden z-20 transition-colors duration-500 group-hover:bg-white/10">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] to-transparent z-10 w-full"></div>
+                  <div className="text-white/20 font-bold text-2xl md:text-3xl transform group-hover:scale-110 transition-transform duration-700 ease-out px-6 text-center w-full z-0">
+                    {project.title.split('—')[0]}
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-6 mt-auto">
-                  <a href={project.link} className="flex items-center gap-2 text-sm font-semibold text-white hover:text-indigo-400 transition-colors">
-                    <ExternalLink size={16} /> Live Demo
-                  </a>
-                  <a href={project.github} className="flex items-center gap-2 text-sm font-semibold text-gray-400 hover:text-white transition-colors">
-                    <Github size={16} /> Source Code
-                  </a>
+                <div className="p-8 flex-1 flex flex-col z-20 -mt-10">
+                  <div className="bg-[#0B0F19] p-4 rounded-3xl border border-white/10 shadow-xl mb-4 relative overflow-hidden group-hover:border-white/20 transition-all duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <h3 className="text-xl font-bold group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all duration-500 leading-tight relative z-10">
+                      {project.title}
+                    </h3>
+                    <p className="text-indigo-300 text-sm mt-2 font-semibold relative z-10">{project.role}</p>
+                  </div>
+
+                  <p className="text-gray-400 mb-6 flex-1 text-sm md:text-base leading-relaxed group-hover:text-gray-300 transition-colors duration-500 relative z-10">{project.desc}</p>
+
+                  <div className="flex flex-wrap gap-2 mb-8 relative z-10">
+                    {project.tech.map((t, i) => (
+                      <span key={i} className="text-xs font-semibold px-4 py-2 bg-white/5 rounded-full text-gray-300 border border-white/10 group-hover:bg-white/10 transition-colors duration-300">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-6 mt-auto relative z-10">
+                    <a href={project.link} className="flex items-center gap-2 text-sm font-bold text-white hover:text-indigo-400 transition-colors group/link">
+                      <ExternalLink size={16} className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" /> Live Demo
+                    </a>
+                    <a href={project.github} className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors group/git">
+                      <Github size={16} className="group-hover/git:-translate-y-0.5 transition-transform" /> Source Code
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
