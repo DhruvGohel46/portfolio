@@ -1,126 +1,91 @@
-import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Award, Trophy, Star } from 'lucide-react';
 
-const ACHIEVEMENTS = [
+const achievements = [
     {
-        icon: '🏆',
-        color: '#f59e0b',
-        bg: 'rgba(245,158,11,0.1)',
-        border: 'rgba(245,158,11,0.2)',
-        title: 'Odoo Hackathon 2025 — 1st Place',
-        sub: 'Team Lead · "Quantum Coders" · 4-member team',
-        desc: 'Led team to first place with a modular campus club management system built on Odoo ERP, automating events, membership, payments, and analytics.',
+        year: '2025',
+        title: 'Odoo Hackathon — Participant',
+        desc: 'Led "Quantum Coders" team. Built campus club ERP modules in Python + Odoo.',
+        icon: <Trophy size={24} className="text-yellow-400" />,
+        color: 'from-yellow-400/20'
     },
     {
-        icon: '🥇',
-        color: '#6366f1',
-        bg: 'rgba(99,102,241,0.08)',
-        border: 'rgba(99,102,241,0.18)',
-        title: 'Intercollegiate Web Dev Contest — Winner',
-        sub: 'College Level · 2024',
-        desc: 'Won first prize in a competitive web development challenge showcasing full-stack proficiency and creative problem-solving under time pressure.',
+        year: '2025',
+        title: 'Smart India Hackathon 2025',
+        desc: 'Selected to represent GTU. Built RailQR — AI-powered asset tracker for Indian Railways.',
+        icon: <Award size={24} className="text-indigo-400" />,
+        color: 'from-indigo-400/20'
     },
     {
-        icon: '🏅',
-        color: '#a78bfa',
-        bg: 'rgba(167,139,250,0.08)',
-        border: 'rgba(167,139,250,0.18)',
-        title: 'Smart India Hackathon 2025 — National Participant',
-        sub: 'Full-Stack Developer · Government of India Initiative',
-        desc: 'Selected to represent our institution at SIH 2025. Developed RailQR — an AI-powered railway asset management system for Indian Railways.',
+        year: '2025',
+        title: 'NPTEL Python — Elite + Top 5%',
+        desc: '94% score. Top 5% nationally in "The Joy of Computing using Python" — IIT Madras.',
+        icon: <Star size={24} className="text-emerald-400" />,
+        color: 'from-emerald-400/20'
     },
     {
-        icon: '⭐',
-        color: '#22c55e',
-        bg: 'rgba(34,197,94,0.08)',
-        border: 'rgba(34,197,94,0.18)',
-        title: 'NPTEL Python — Elite + Top 5% Topper',
-        sub: 'IIT Madras · 94% Score · 12 Weeks',
-        desc: 'Achieved Elite certification with Top 5% distinction in "The Joy of Computing using Python" — a competitive national-level online course.',
+        year: '2025',
+        title: 'Oracle Data Platform Associate',
+        desc: 'Certified in cloud data management and Oracle\'s data platform ecosystem.',
+        icon: <Award size={24} className="text-blue-400" />,
+        color: 'from-blue-400/20'
     },
     {
-        icon: '☁️',
-        color: '#38bdf8',
-        bg: 'rgba(56,189,248,0.08)',
-        border: 'rgba(56,189,248,0.18)',
-        title: 'Oracle Data Platform Foundations Associate',
-        sub: 'Oracle Certification · Cloud Professional',
-        desc: 'Certified in cloud data management, analytics foundations, and Oracle\'s data platform ecosystem.',
+        year: '2024',
+        title: 'Intercollegiate Web Dev Contest',
+        desc: 'Won first prize in a competitive web development challenge at college level.',
+        icon: <Trophy size={24} className="text-yellow-400" />,
+        color: 'from-yellow-400/20'
     },
     {
-        icon: '🎓',
-        color: '#f59e0b',
-        bg: 'rgba(245,158,11,0.08)',
-        border: 'rgba(245,158,11,0.15)',
+        year: '2024',
         title: 'NPTEL Java — Certified',
-        sub: 'NPTEL Swayam · 85% Score',
-        desc: 'Completed "Programming in Java" certification through the national SWAYAM platform.',
-    },
+        desc: '85% score in "Programming in Java" — SWAYAM / NPTEL national platform.',
+        icon: <Award size={24} className="text-purple-400" />,
+        color: 'from-purple-400/20'
+    }
 ];
 
 export default function Achievements() {
-    const ref = useRef(null);
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([e]) => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.disconnect(); } },
-            { threshold: 0.1 }
-        );
-        if (ref.current) observer.observe(ref.current);
-        return () => observer.disconnect();
-    }, []);
-
     return (
-        <section id="achievements" className="section" style={{ background: 'var(--bg-surface)' }}>
-            <div className="container">
-                <div ref={ref} className="stagger">
-                    <span className="section-label">Achievements</span>
-                    <h2 style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2rem)', marginTop: '0.5rem', marginBottom: '2.5rem', color: 'var(--text-1)' }}>
-                        Recognition & Wins
-                    </h2>
+        <section id="achievements" className="py-24 px-6 relative z-10">
+            <div className="max-w-6xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-16 text-center"
+                >
+                    <h2 className="text-3xl md:text-5xl font-bold mb-4">Wins & Certifications</h2>
+                    <div className="w-32 h-1 bg-yellow-500 mx-auto rounded-full"></div>
+                    <p className="text-gray-400 mt-6 max-w-2xl mx-auto">Proven track record of competitive programming, hackathons, and certifications.</p>
+                </motion.div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
-                        {ACHIEVEMENTS.map((a, i) => (
-                            <div key={i} className="card" style={{
-                                padding: '1.4rem 1.5rem',
-                                display: 'flex', alignItems: 'flex-start', gap: '1rem',
-                                borderColor: a.border,
-                                background: `linear-gradient(135deg, ${a.bg} 0%, var(--bg-surface) 100%)`,
-                            }}>
-                                {/* Icon */}
-                                <div style={{
-                                    flexShrink: 0, width: '44px', height: '44px',
-                                    background: a.bg, border: `1px solid ${a.border}`,
-                                    borderRadius: '10px', display: 'flex', alignItems: 'center',
-                                    justifyContent: 'center', fontSize: '1.3rem',
-                                }}>
-                                    {a.icon}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {achievements.map((item, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className="glass-card p-6 relative overflow-hidden group hover:border-white/20 transition-all flex flex-col"
+                        >
+                            <div className={`absolute -right-10 -top-10 w-32 h-32 bg-gradient-to-bl ${item.color} to-transparent rounded-full opacity-30 group-hover:opacity-60 transition-opacity blur-2xl`}></div>
+
+                            <div className="flex items-start justify-between mb-4 relative z-10">
+                                <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:bg-white/10 transition-colors">
+                                    {item.icon}
                                 </div>
-                                {/* Text */}
-                                <div style={{ flex: 1 }}>
-                                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.6rem', marginBottom: '0.2rem' }}>
-                                        <h3 style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-1)' }}>
-                                            {a.title}
-                                        </h3>
-                                    </div>
-                                    <p style={{ fontSize: '0.72rem', color: a.color, fontWeight: 600, margin: '0 0 0.4rem 0', letterSpacing: '0.01em' }}>
-                                        {a.sub}
-                                    </p>
-                                    <p style={{ fontSize: '0.82rem', color: 'var(--text-2)', lineHeight: 1.6, margin: 0 }}>
-                                        {a.desc}
-                                    </p>
-                                </div>
+                                <span className="text-xs font-bold px-3 py-1 bg-white/5 rounded-full text-gray-300 border border-white/10">{item.year}</span>
                             </div>
-                        ))}
-                    </div>
+
+                            <h3 className="text-xl font-bold mb-3 text-white relative z-10">{item.title}</h3>
+                            <p className="text-gray-400 text-sm leading-relaxed relative z-10 flex-1">{item.desc}</p>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
-
-            <style jsx>{`
-        @media (min-width: 768px) {
-          div[style*="grid-template-columns: 1fr"] {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-      `}</style>
         </section>
     );
 }
