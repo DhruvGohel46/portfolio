@@ -1,6 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
+  "type": "module",
   "description": "Dhruv Gohel's personal portfolio built with Next.js",
   "scripts": {
     "dev": "next dev -p 5000",

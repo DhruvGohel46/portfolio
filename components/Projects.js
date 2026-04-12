@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Youtube, Shield, Code, Layout, Database, Smartphone, Github } from 'lucide-react';
 
+const projects = [
   {
     title: 'Reverse Shell Simulation — Persistence & Privilege Escalation',
     role: 'Security Researcher',
