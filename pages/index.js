@@ -15,8 +15,24 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Dhruv Gohel | SEC & SWE Portfolio</title>
-        <meta name="description" content="Dhruv Gohel's portfolio - Cybersecurity, Data Science, Full Stack Development" />
+        <title>Dhruv Gohel</title>
+        <meta name="description" content="Dhruv Gohel — Security Researcher specializing in OS Security, Penetration Testing, and Digital Forensics." />
+        <meta name="application-name" content="Dhruv Gohel" />
+        <meta property="og:title" content="Dhruv Gohel" />
+        <meta property="og:site_name" content="Dhruv Gohel" />
+        <meta property="og:description" content="Security Researcher specializing in OS Security, Penetration Testing, and Digital Forensics." />
+        <meta property="og:type" content="website" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Dhruv Gohel",
+              "url": "https://dhruv-gohel.netlify.app"
+            })
+          }}
+        />
       </Head>
 
       <AnimatedBackground />

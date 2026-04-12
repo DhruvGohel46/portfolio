@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion';
-import { Layout, Server, Database } from 'lucide-react';
+import { Layout, Server, Database, Shield } from 'lucide-react';
 
 const skills = [
+    {
+        title: 'Security & Research',
+        icon: <Shield size={32} className="text-red-400" />,
+        items: ['Ethical Hacking', 'OS Security', 'Penetration Testing', 'Network Security', 'Vulnerability Research'],
+        color: 'from-red-500/20'
+    },
     {
         title: 'Frontend Development',
         icon: <Layout size={32} className="text-indigo-400" />,
@@ -17,7 +23,7 @@ const skills = [
     {
         title: 'Databases & Tools',
         icon: <Database size={32} className="text-purple-400" />,
-        items: ['PostgreSQL / SQLite', 'Git / GitHub', 'Odoo ERP', 'Ollama / LLMs', 'Docker Basics'],
+        items: ['PostgreSQL / SQLite', 'Git / GitHub', 'Odoo ERP', 'Docker Basics', 'Ollama / LLMs'],
         color: 'from-purple-500/20'
     }
 ];
@@ -34,10 +40,10 @@ export default function Skills() {
                 >
                     <h2 className="text-3xl md:text-5xl font-bold mb-4">Core Expertise</h2>
                     <div className="w-20 h-1 bg-purple-500 mx-auto rounded-full"></div>
-                    <p className="text-gray-400 mt-6 max-w-2xl mx-auto">Mastering the intersection of modern frontend, robust backend, and AI integrations.</p>
+                    <p className="text-gray-400 mt-6 max-w-2xl mx-auto">Bridging the gap between tactical security research and robust, scalable digital architecture.</p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {skills.map((skill, index) => (
                         <motion.div
                             key={skill.title}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MapPin, GraduationCap, Code } from 'lucide-react';
+import { MapPin, GraduationCap, Code, Shield } from 'lucide-react';
 
 export default function About() {
   return (
@@ -28,15 +28,15 @@ export default function About() {
             <div className="mb-10 border-l-2 border-indigo-500/40 pl-5 relative">
               <div className="absolute -left-px top-0 w-[2px] h-1/3 bg-indigo-400 shadow-[0_0_10px_rgba(129,140,248,0.8)]"></div>
               <p className="text-xl md:text-2xl italic text-gray-300 font-medium tracking-tight leading-relaxed">
-                “I don’t just write code — I build systems that solve real problems.”
+                “I don’t just build systems — I research how to break them to make them unbreakable.”
               </p>
             </div>
 
             <p className="text-gray-400 text-lg leading-relaxed mb-6 font-normal">
-              I'm a second-year Computer Engineering student at Gujarat Technological University, Ahmedabad — graduating in 2028. I build full-stack web applications using React, Next.js, Python, and Django.
+              I'm a second-year Computer Engineering student at Gujarat Technological University, Ahmedabad — specializing in <span className="text-indigo-400 font-semibold">Cybersecurity & OS Research</span>. I focus on bridging the gap between scalable digital infrastructure and robust tactical defense.
             </p>
             <p className="text-gray-400 text-lg leading-relaxed mb-10 font-normal">
-              I led a 4-member team in the Odoo Hackathon 2025, built a QR-based railway asset tracker selected for SIH 2025, and shipped a freelance salon website scoring 90+ on Lighthouse. I care about clean code, real outcomes, and software that actually addresses friction.
+              From leading winning hackathon teams to building AI-powered asset trackers, my work is driven by a security-first mindset. I research persistent attack vectors, silent privilege escalation, and defensive strategies to build software that is resilient by design.
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-4 text-gray-300">
@@ -47,9 +47,9 @@ export default function About() {
               </div>
               <div className="flex items-center gap-4 text-gray-300">
                 <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
-                  <Code size={20} />
+                  <Shield size={20} />
                 </div>
-                <span>Full-Stack & Hackathon Enthusiast</span>
+                <span>Security Researcher & Penetration Tester</span>
               </div>
               <div className="flex items-center gap-4 text-gray-300">
                 <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
@@ -72,8 +72,8 @@ export default function About() {
               <div className="w-32 h-32 border border-indigo-400/30 rounded-full border-t-indigo-400 absolute"></div>
               <div className="w-40 h-40 border border-purple-400/20 rounded-full border-b-purple-400 absolute"></div>
             </div>
-            <div className="absolute text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 text-center">
-              Code <br /> & <br /> Outcomes
+            <div className="absolute text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-indigo-400 text-center">
+              Research <br /> & <br /> Defense
             </div>
           </motion.div>
         </div>

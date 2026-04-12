@@ -3,23 +3,23 @@ import { Briefcase, Terminal, Shield, CloudLightning, ArrowRight, ExternalLink }
 
 const projects = [
     {
-        title: 'Vizo — Desktop Voice Assistant',
+        title: 'Vizo — Secure Voice System',
         tech: 'Python + PyQt6',
-        desc: 'Chat-style UI with Dark/Light themes. Integrates Google Speech Recognition and Windows SAPI TTS with thread-safe signals.',
+        desc: 'Advanced voice system with thread-safe signal handling and secure API integration for real-time speech processing.',
         icon: <Terminal size={24} className="text-indigo-400" />,
         color: 'from-indigo-500/20'
     },
     {
-        title: 'Random Password Generator',
-        tech: 'PyQt6 GUI Application',
-        desc: 'Custom length and character sets with strong input validation, clipboard copy feature, and secure workflow design.',
+        title: 'Tactical Password Engine',
+        tech: 'PyQt6 Secure Application',
+        desc: 'High-entropy password generation with strong input validation, encrypted clipboard handling, and secure entropy pools.',
         icon: <Shield size={24} className="text-emerald-400" />,
         color: 'from-emerald-500/20'
     },
     {
-        title: 'Basic Weather App',
-        tech: 'Tkinter GUI Integration',
-        desc: 'Weather API integration fetching real-time temperature, humidity, and wind conditions with robust error handling.',
+        title: 'Weather Audit Tool',
+        tech: 'Tkinter Data Integration',
+        desc: 'Real-time environmental data auditing with robust error handling and secure remote API communication.',
         icon: <CloudLightning size={24} className="text-cyan-400" />,
         color: 'from-cyan-500/20'
     }
@@ -48,7 +48,7 @@ export default function InternshipSection() {
                         AICTE Oasis Infobyte <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Internship</span>
                     </h2>
                     <p className="text-xl md:text-2xl text-gray-400 mb-6 max-w-3xl mx-auto leading-relaxed">
-                        An experience where I translated raw Python logic into tools people can actually use.
+                        Translating tactical logic into secure, production-ready system tools.
                     </p>
                 </motion.div>
 

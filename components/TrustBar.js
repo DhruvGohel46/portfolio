@@ -1,10 +1,10 @@
 const TRUST_ITEMS = [
+    { emoji: '🛡️', label: 'Security Researcher' },
+    { emoji: '🕵️', label: 'Pentesting Research' },
+    { emoji: '🔒', label: 'OS Hardening' },
+    { emoji: '💼', label: 'Security Consultant' },
     { emoji: '🏆', label: 'Hackathon Winner' },
-    { emoji: '💼', label: 'Freelance Developer' },
-    { emoji: '🚀', label: '6+ Projects Built' },
-    { emoji: '⚡', label: 'React & Next.js' },
     { emoji: '🎓', label: 'NPTEL Elite · Top 5%' },
-    { emoji: '🌐', label: 'Full-Stack Engineer' },
     { emoji: '🏅', label: 'SIH 2025 Participant' },
     { emoji: '☁️', label: 'Oracle Cloud Certified' },
 ];

@@ -4,6 +4,8 @@ export default function Document() {
     return (
         <Html lang="en">
             <Head>
+                <meta name="name" content="Dhruv Gohel" />
+                <meta name="application-name" content="Dhruv Gohel" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link

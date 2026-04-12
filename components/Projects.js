@@ -1,46 +1,61 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { Youtube, Shield, Code, Layout, Database, Smartphone, Github } from 'lucide-react';
 
-const projects = [
+  {
+    title: 'Reverse Shell Simulation — Persistence & Privilege Escalation',
+    role: 'Security Researcher',
+    desc: 'Educational research project demonstrating silent privilege escalation, persistence using scheduled tasks & registry mechanisms, and remote command execution on Windows 10/11 systems. Authorized/consensual research only.',
+    tech: ['CyberSecurity', 'Ethical Hacking', 'OS Security', 'Security Research', 'PowerShell'],
+    link: 'https://www.youtube.com/watch?v=ztY4NmsZrxs',
+    github: 'https://www.youtube.com/watch?v=zPHhtJglhHI',
+    linkLabel: 'Win 11 Demo',
+    githubLabel: 'Win 10 Demo',
+    icon: <Shield size={48} className="text-indigo-500/20" />
+  },
   {
     title: 'ReBill — Production-Grade Offline POS',
     role: 'Founder & Full-Stack Developer',
     desc: 'Actively used in my own fast food shop. A modern offline-first POS & billing system built from scratch to handle real-time billing, inventory, automated reporting, and high-speed thermal receipt printing with zero downtime.',
     tech: ['React', 'Flask', 'SQLite', 'Offline-First', 'REST APIs'],
-    link: '#',
-    github: 'https://github.com/DhruvGohel46/Rebill'
+    link: null,
+    github: 'https://github.com/DhruvGohel46/Rebill',
+    icon: <Database size={48} className="text-indigo-500/20" />
   },
   {
     title: 'Quantum Coders — Odoo Hackathon 2025',
     role: 'Team Lead',
     desc: 'Led a 4-member team with custom Odoo ERP modules for campus club management — automating events, membership payments, and analytics dashboards.',
     tech: ['Python', 'Odoo ERP', 'PostgreSQL', 'REST API', 'Webhooks'],
-    link: '#',
-    github: '#'
+    link: null,
+    github: null,
+    icon: <Code size={48} className="text-indigo-500/20" />
   },
   {
     title: 'RailQR — Railway Asset Management',
     role: 'Full-Stack Developer · Smart India Hackathon 2025',
     desc: 'QR-code based asset tracking for Indian Railways. Integrated local Ollama AI to auto-standardize maintenance records into structured fault data.',
     tech: ['Flask', 'React', 'Ollama AI', 'XML/SQL', 'QR Generation'],
-    link: '#',
-    github: '#'
+    link: null,
+    github: null,
+    icon: <Smartphone size={48} className="text-indigo-500/20" />
   },
   {
     title: 'COSO — College Social Platform',
     role: 'Full-Stack Developer · Campus Project',
     desc: 'Full-stack campus social platform with role-based access, secure email signup, REST APIs, file uploads, and mobile-first responsive UI.',
     tech: ['Django', 'Python', 'PostgreSQL', 'Tailwind', 'DRF'],
-    link: '#',
-    github: '#'
+    link: null,
+    github: null,
+    icon: <Layout size={48} className="text-indigo-500/20" />
   },
   {
     title: 'Falak Al Buraimi Beauty Salon',
     role: 'Freelance Developer',
     desc: 'Responsive 4-page salon website for a client in Oman — animated offers, service cards, Google Maps embed, and client-side form validation. 90+ Lighthouse.',
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind'],
-    link: '#',
-    github: '#'
+    link: null,
+    github: null,
+    icon: <Layout size={48} className="text-indigo-500/20" />
   }
 ];
 
@@ -88,8 +103,12 @@ export default function Projects() {
 
                 <div className="h-48 bg-white/5 relative flex items-center justify-center border-b border-white/10 overflow-hidden z-20 transition-colors duration-500 group-hover:bg-white/10">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] to-transparent z-10 w-full"></div>
-                  <div className="text-white/20 font-bold text-2xl md:text-3xl transform group-hover:scale-110 transition-transform duration-700 ease-out px-6 text-center w-full z-0">
-                    {project.title.split('—')[0]}
+                  <div className="relative z-0 transform group-hover:scale-110 transition-transform duration-700 ease-out">
+                    {project.icon ? project.icon : (
+                      <div className="text-white/20 font-bold text-2xl md:text-3xl px-6 text-center w-full">
+                        {project.title.split('—')[0]}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -113,12 +132,21 @@ export default function Projects() {
                   </div>
 
                   <div className="flex items-center gap-6 mt-auto relative z-10">
-                    <a href={project.link} className="flex items-center gap-2 text-sm font-bold text-white hover:text-indigo-400 transition-colors group/link">
-                      <ExternalLink size={16} className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" /> Live Demo
-                    </a>
-                    <a href={project.github} className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors group/git">
-                      <Github size={16} className="group-hover/git:-translate-y-0.5 transition-transform" /> Source Code
-                    </a>
+                    {project.link && project.link !== '#' && (
+                      <a href={project.link} className="flex items-center gap-2 text-sm font-bold text-white hover:text-indigo-400 transition-colors group/link">
+                        <Youtube size={16} className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" /> {project.linkLabel || 'Live Demo'}
+                      </a>
+                    )}
+                    {project.github && project.github !== '#' && (
+                      <a href={project.github} className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors group/git">
+                        {project.github.includes('youtube') ? (
+                          <Youtube size={16} className="group-hover/git:-translate-y-0.5 transition-transform" />
+                        ) : (
+                          <Github size={16} className="group-hover/git:-translate-y-0.5 transition-transform" />
+                        )}
+                        {project.githubLabel || 'Source Code'}
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

@@ -2,7 +2,7 @@ export default function AnimatedBackground() {
     return (
         <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
             {/* Radial purple glow top left */}
-            <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-purple-900/30 rounded-full blur-[120px] mix-blend-screen mix-blend-lighten"></div>
+            <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-purple-900/30 rounded-full blur-[120px] mix-blend-screen"></div>
 
             {/* Subtle star particles (simplified with css background) */}
             <div

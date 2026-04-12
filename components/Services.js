@@ -2,28 +2,28 @@ import { useEffect, useRef } from 'react';
 
 const SERVICES = [
     {
-        icon: '🌐',
-        title: 'Business Websites',
-        desc: 'Fast, professional websites for salons, restaurants, agencies, and local businesses — mobile-first, SEO-ready, and designed to convert visitors.',
-        bullets: ['Responsive design', 'Contact forms', 'Google Maps + Analytics', 'Lighthouse 90+'],
+        icon: '🛡️',
+        title: 'Security Auditing & Pentesting',
+        desc: 'Comprehensive vulnerability assessments and penetration testing for web applications and network infrastructures — identifying risks before they are exploited.',
+        bullets: ['Vulnerability Assessment', 'Web Pentesting', 'Risk Mitigation', 'Authorized Research'],
     },
     {
-        icon: '⚡',
-        title: 'Web App Development',
-        desc: 'Full-stack web applications built with React/Next.js on the frontend and Python or Node.js on the backend — shipping real features, not just prototypes.',
-        bullets: ['React / Next.js', 'REST APIs', 'Database design', 'Authentication'],
+        icon: '🔒',
+        title: 'OS Security & Forensics',
+        desc: 'System hardening and digital forensics research — analyzing attack vectors, securing Windows/Linux environments, and investigating system persistent mechanisms.',
+        bullets: ['System Hardening', 'Forensics Research', 'Malware Analysis', 'Persistence Auditing'],
     },
     {
-        icon: '🎨',
-        title: 'UI Design & Prototyping',
-        desc: 'Clean, modern interfaces designed with a developer\'s eye — no unnecessary complexity, just clear visual hierarchy and smooth interactions.',
-        bullets: ['Component systems', 'Mobile-first', 'Smooth animations', 'Figma → Code'],
+        icon: '🏗️',
+        title: 'Secure System Architecture',
+        desc: 'Designing and building digital platforms with security as a core requirement — ensuring data integrity, secure authentication, and robust infrastructure.',
+        bullets: ['Safe API Design', 'Data Integrity', 'Secure Auth Flow', 'Encrypted Workflows'],
     },
     {
         icon: '🤖',
-        title: 'AI Integration',
-        desc: 'I can embed AI features into your product — chatbots, content summarizers, or smart automation — using local or cloud LLMs.',
-        bullets: ['Ollama / HuggingFace', 'NLP pipelines', 'AI-powered UX', 'API wrapping'],
+        title: 'Security-First AI Integration',
+        desc: 'Embedding AI features with a focus on data privacy and adversarial robustness — using LLMs for threat detection or automated security reporting.',
+        bullets: ['Automated Reporting', 'Adversarial Robustness', 'Secure LLM Integration', 'Private AI Models'],
     },
 ];
 

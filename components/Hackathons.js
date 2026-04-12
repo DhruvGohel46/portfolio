@@ -28,8 +28,8 @@ const hackathons = [
         badge: 'Top 10 Finalist — GDG Autonomous Hacks 26',
         icon: <ShieldAlert className="text-rose-400" size={24} />,
         color: 'from-rose-500/20',
-        problem: 'Emergency systems fail during poor connectivity and rely heavily on manual coordination.',
-        solution: 'Cloud-native, offline-first autonomous ambulance dispatch system with sub-200ms response time.',
+        problem: 'Mission-critical emergency systems fail during network outages and lack robust autonomous failover.',
+        solution: 'Tactical, offline-first autonomous ambulance dispatch system with sub-200ms response time and GSM disaster recovery layers.',
         architecture: [
             'Node.js event-driven architecture',
             'MongoDB geo-spatial indexing',
@@ -108,10 +108,10 @@ export default function Hackathons() {
                     </div>
 
                     <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1]">
-                        Hackathon <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Finalist Builds</span>
+                        Tactical <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-indigo-400 to-purple-400">Engineering</span>
                     </h2>
                     <p className="text-xl md:text-2xl text-gray-400 font-medium mb-10 max-w-4xl mx-auto leading-relaxed">
-                        National-level AI systems, offline-first architectures & real-time optimization challenges.
+                        National-level security research, mission-critical autonomous architectures, and real-time optimization challenges.
                     </p>
 
                     <div className="mt-8 border-l-4 border-l-indigo-500/50 bg-gradient-to-r from-indigo-900/20 to-transparent p-6 sm:p-8 rounded-r-2xl inline-block text-left relative overflow-hidden group">

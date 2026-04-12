@@ -17,6 +17,14 @@ const CURRENT_PROJECTS = [
         desc: 'AI-powered railway asset management system — field staff scan QR codes to log maintenance, with Ollama LLM auto-standardizing records into structured fault data.',
         tech: ['Flask', 'React', 'Next.js', 'Ollama AI', 'Python'],
     },
+    {
+        name: 'Security Research Framework',
+        tagline: 'Defensive monitoring & vulnerability research',
+        stage: 'Planning',
+        stageColor: '#f59e0b',
+        desc: 'Advanced security research framework focusing on defensive strategies, unauthorized access detection, and penetration testing methodologies. Authorized/consensual testing and defensive research only.',
+        tech: ['Python', 'React', 'Network Security', 'Penetration Testing'],
+    },
 ];
 
 export default function CurrentlyBuilding() {

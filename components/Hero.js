@@ -58,9 +58,9 @@ export default function Hero() {
               transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
               className="text-4xl sm:text-5xl md:text-5xl lg:text-[60px] font-bold tracking-tight leading-[1.15] text-center md:text-left max-w-2xl"
             >
-              Engineering <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-500 animate-gradient-x font-semibold">Secure & Scalable</span> <br className="hidden md:block" />
-              Digital Platforms.
+              Securing Digital <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-500 animate-gradient-x font-semibold">Infrastructures &</span> <br className="hidden md:block" />
+              Tactical Defense.
             </motion.h1>
           </div>
 
@@ -70,7 +70,7 @@ export default function Hero() {
             transition={{ delay: 0.5 }}
             className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl text-center leading-relaxed"
           >
-            Cybersecurity-driven Computer Engineering student from Gujarat. <br className="hidden md:block" /> Building real-world tech solutions in security, analytics & startup ecosystems.
+            Computer Engineering student specializing in <span className="text-indigo-400 font-semibold">Security Research</span>, <br className="hidden md:block" /> OS-Level Penetration Testing, and Vulnerability Mitigation.
           </motion.p>
 
           <motion.div
