@@ -100,7 +100,7 @@ export default function Hackathons() {
                     viewport={{ once: true }}
                     className="text-center mb-20"
                 >
-                    <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 mb-8 border-indigo-500/20 backdrop-blur-md shadow-[0_0_30px_rgba(79,70,229,0.15)]">
+                    <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md shadow-[0_0_30px_rgba(79,70,229,0.15)]">
                         <Trophy size={18} className="text-yellow-400" />
                         <span className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase flex items-center gap-2">
                             Engineering Under Pressure

@@ -37,7 +37,7 @@ export default function InternshipSection() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 border-indigo-500/30">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
                         <Briefcase size={16} className="text-indigo-400" />
                         <span className="text-gray-300 text-xs sm:text-sm font-semibold tracking-wider uppercase">
                             Internship Experience

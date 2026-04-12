@@ -68,21 +68,51 @@ if (skillsSection) {
     io.observe(skillsSection);
 }
 
-/* ---- 5. Project cards — stagger fade-up ---- */
+/* ---- 5. Project cards — auto-cycling carousel ---- */
 const projectCards = document.querySelectorAll('.project-card');
+let currentCardIndex = 0;
+let cardInterval;
+let isCarouselStarted = false;
+
+function showCard(index) {
+    projectCards.forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+    });
+}
+
+function nextCard() {
+    currentCardIndex = (currentCardIndex + 1) % projectCards.length;
+    showCard(currentCardIndex);
+}
+
+function startCarousel() {
+    if (isCarouselStarted) return;
+    isCarouselStarted = true;
+    showCard(0);
+    cardInterval = setInterval(nextCard, 3000);
+}
+
+function stopCarousel() {
+    clearInterval(cardInterval);
+}
+
+function resumeCarousel() {
+    stopCarousel();
+    cardInterval = setInterval(nextCard, 3000);
+}
+
 if (projectCards.length) {
     const io = new IntersectionObserver(([entry]) => {
         if (!entry.isIntersecting) return;
         io.disconnect();
-        gsap.to('.project-card', {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            stagger: 0.12,
-            ease: 'power2.out',
-        });
+        startCarousel();
     }, { threshold: 0.1 });
     io.observe(document.querySelector('.projects'));
+
+    // Pause on hover, resume on leave
+    const projectsStack = document.querySelector('.projects-stack');
+    projectsStack.addEventListener('mouseenter', stopCarousel);
+    projectsStack.addEventListener('mouseleave', resumeCarousel);
 }
 
 /* ---- 6. About section ---- */

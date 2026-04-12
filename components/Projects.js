@@ -3,7 +3,7 @@ import { Youtube, Shield, Code, Layout, Database, Smartphone, Github } from 'luc
 
 const projects = [
   {
-    title: 'Reverse Shell Simulation — Persistence & Privilege Escalation',
+    title: 'Shrink',
     role: 'Security Researcher',
     desc: 'Educational research project demonstrating silent privilege escalation, persistence using scheduled tasks & registry mechanisms, and remote command execution on Windows 10/11 systems. Authorized/consensual research only.',
     tech: ['CyberSecurity', 'Ethical Hacking', 'OS Security', 'Security Research', 'PowerShell'],
@@ -11,16 +11,16 @@ const projects = [
     github: 'https://www.youtube.com/watch?v=zPHhtJglhHI',
     linkLabel: 'Win 11 Demo',
     githubLabel: 'Win 10 Demo',
-    icon: <Shield size={48} className="text-indigo-500/20" />
+    image: '/projects/Shrink.png'
   },
   {
-    title: 'ReBill — Production-Grade Offline POS',
+    title: 'InfoOS',
     role: 'Founder & Full-Stack Developer',
     desc: 'Actively used in my own fast food shop. A modern offline-first POS & billing system built from scratch to handle real-time billing, inventory, automated reporting, and high-speed thermal receipt printing with zero downtime.',
     tech: ['React', 'Flask', 'SQLite', 'Offline-First', 'REST APIs'],
     link: null,
     github: 'https://github.com/DhruvGohel46/Rebill',
-    icon: <Database size={48} className="text-indigo-500/20" />
+    image: '/projects/InfoOS.png'
   },
   {
     title: 'Quantum Coders — Odoo Hackathon 2025',
@@ -29,7 +29,7 @@ const projects = [
     tech: ['Python', 'Odoo ERP', 'PostgreSQL', 'REST API', 'Webhooks'],
     link: null,
     github: null,
-    icon: <Code size={48} className="text-indigo-500/20" />
+    image: '/projects/Quantum Coders .png'
   },
   {
     title: 'RailQR — Railway Asset Management',
@@ -38,7 +38,7 @@ const projects = [
     tech: ['Flask', 'React', 'Ollama AI', 'XML/SQL', 'QR Generation'],
     link: null,
     github: null,
-    icon: <Smartphone size={48} className="text-indigo-500/20" />
+    image: '/projects/RailQR.png'
   },
   {
     title: 'COSO — College Social Platform',
@@ -47,7 +47,7 @@ const projects = [
     tech: ['Django', 'Python', 'PostgreSQL', 'Tailwind', 'DRF'],
     link: null,
     github: null,
-    icon: <Layout size={48} className="text-indigo-500/20" />
+    image: '/projects/COSO.png'
   },
   {
     title: 'Falak Al Buraimi Beauty Salon',
@@ -56,7 +56,7 @@ const projects = [
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind'],
     link: null,
     github: null,
-    icon: <Layout size={48} className="text-indigo-500/20" />
+    image: '/projects/Falak Al Buraimi Beauty Salon.png'
   }
 ];
 
@@ -102,11 +102,17 @@ export default function Projects() {
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-indigo-500/5 to-transparent pointer-events-none z-0"></div>
                 )}
 
-                <div className="h-48 bg-white/5 relative flex items-center justify-center border-b border-white/10 overflow-hidden z-20 transition-colors duration-500 group-hover:bg-white/10">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] to-transparent z-10 w-full"></div>
-                  <div className="relative z-0 transform group-hover:scale-110 transition-transform duration-700 ease-out">
-                    {project.icon ? project.icon : (
-                      <div className="text-white/20 font-bold text-2xl md:text-3xl px-6 text-center w-full">
+                <div className="relative bg-white/5 border-b border-white/10 overflow-hidden z-20 transition-all duration-700 ease-in-out h-48 group-hover:h-80">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] to-transparent z-30 w-full pointer-events-none"></div>
+                  <div className="relative z-0 w-full h-full">
+                    {project.image ? (
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover object-top opacity-70 group-hover:opacity-100 transition-all duration-700 ease-in-out"
+                      />
+                    ) : (
+                      <div className="flex items-center justify-center w-full h-full text-white/20 font-bold text-2xl md:text-3xl px-6 text-center relative z-10">
                         {project.title.split('—')[0]}
                       </div>
                     )}

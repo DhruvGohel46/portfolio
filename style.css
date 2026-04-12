@@ -576,9 +576,6 @@ section {
 .skill-progress {
     height: 100%;
     background: linear-gradient(90deg, var(--accent), #818cf8);
-    width: 0%;
-    border-radius: 999px;
-    transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ---------- Projects ---------- */
@@ -587,20 +584,30 @@ section {
 }
 
 .projects-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    position: relative;
+    height: 400px;
     margin-top: 2.5rem;
 }
 
 .project-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     background: var(--bg-elevated);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: border-color 0.25s, transform 0.25s;
+    transition: border-color 0.25s, transform 0.25s, opacity 0.5s;
     opacity: 0;
     transform: translateY(32px);
+    pointer-events: none;
+}
+
+.project-card.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .project-card:hover {
