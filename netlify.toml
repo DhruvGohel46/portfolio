@@ -1,6 +1,9 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  # DO NOT explicitly set publish = ".next". This breaks Netlify's SSR auto-detection.
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[headers]]
   for = "/*"
