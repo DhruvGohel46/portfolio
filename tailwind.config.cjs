@@ -1,29 +1,31 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-        "./pages/**/*.{js,ts,jsx,tsx}",
-        "./components/**/*.{js,ts,jsx,tsx}",
-    ],
-    theme: {
-        extend: {
-            colors: {
-                background: "#0B0F19",
-                primary: "#FFFFFF",
-                secondary: "#9CA3AF",
-                accent: {
-                    start: "#4f46e5",
-                    end: "#7c3aed",
-                },
-                glass: {
-                    bg: "rgba(255,255,255,0.05)",
-                    border: "rgba(255,255,255,0.1)",
-                }
-            },
-            backgroundImage: {
-                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                'hero-gradient': 'linear-gradient(to right, #4f46e5, #7c3aed)',
-            }
-        },
-    },
-    plugins: [],
+  content: [
+      "./src/**/*.{js,ts,jsx,tsx}",
+      "./app/**/*.{js,ts,jsx,tsx}",
+      "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: 'class',
+  theme: {
+      extend: {
+          colors: {
+              background: "var(--background)",
+              foreground: "var(--foreground)",
+              border: "var(--border)",
+              muted: "var(--muted)",
+              "muted-foreground": "var(--muted-foreground)",
+              primary: "var(--primary)",
+              "primary-foreground": "var(--primary-foreground)",
+              accent: {
+                  DEFAULT: "var(--accent)",
+                  hover: "var(--accent-hover)",
+              }
+          },
+          fontFamily: {
+              sans: ['var(--font-inter)', 'sans-serif'],
+              mono: ['var(--font-mono)', 'monospace'],
+          },
+      },
+  },
+  plugins: [],
 };
