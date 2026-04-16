@@ -50,7 +50,7 @@ export default function Hero() {
            initial={{ opacity: 0, x: -40 }}
            animate={{ opacity: 1, x: 0 }}
            transition={{ duration: 0.8, ease: "easeOut" }}
-           className="relative z-20 pointer-events-none lg:pointer-events-auto"
+           className="relative z-20 lg:pointer-events-auto mt-8 lg:mt-0"
         >
           <div className="mb-6 pointer-events-auto">
             <SystemTag label="CAPABILITY" value="CORE_STACK" />
@@ -67,18 +67,18 @@ export default function Hero() {
             Systems.
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-10 md:mb-14 leading-relaxed pointer-events-auto backdrop-blur-sm bg-background/30 p-2 sm:p-0 rounded-xl sm:rounded-none border border-transparent hover:border-border sm:border-none transition-colors">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-10 md:mb-14 leading-relaxed backdrop-blur-sm bg-background/30 p-2 sm:p-0 rounded-xl sm:rounded-none border border-transparent hover:border-border sm:border-none transition-colors">
             I am <span className="font-semibold text-foreground">Dhruv Gohel</span>, an OS Security Researcher and Engineer focused on tactical defense, kernel-level exploit research, and highly resilient architecture.
           </p>
 
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 items-stretch sm:items-center w-full mt-2 pointer-events-auto">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 items-stretch sm:items-center w-full mt-2">
             <MagneticButton primary className="px-6 py-4 sm:py-3.5 rounded-xl sm:rounded-lg group w-full sm:w-auto flex justify-center items-center shadow-lg shadow-accent/20">
               <span className="flex items-center gap-2">
-                Deploy Payload <IoChevronForwardOutline className="group-hover:translate-x-1 transition-transform" />
+                Explore Research <IoChevronForwardOutline className="group-hover:translate-x-1 transition-transform" />
               </span>
             </MagneticButton>
             <MagneticButton className="px-6 py-4 sm:py-3.5 rounded-xl sm:rounded-lg w-full sm:w-auto text-center flex justify-center items-center bg-background/50 backdrop-blur-md">
-              Establish Uplink
+              Contact
             </MagneticButton>
           </div>
         </motion.div>

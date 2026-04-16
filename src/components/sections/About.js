@@ -26,7 +26,7 @@ export default function About() {
             className="space-y-6 text-lg text-muted-foreground leading-relaxed"
           >
             <p>
-              I am a <span className="font-semibold text-foreground">Security Researcher</span> and Computer Engineering student at DA-IICT, driven by a deep fascination with how systems break and how to make them unbreakable. My approach combines the curiosity of a researcher with the pragmatism of an engineer.
+              I am a <span className="font-semibold text-foreground">Security Researcher</span> and Computer Engineering student at GTU-SET, driven by a deep fascination with how systems break and how to make them unbreakable. My approach combines the curiosity of a researcher with the pragmatism of an engineer.
             </p>
             <p>
               Beyond traditional software engineering, I specialize in OS-level security, low-level binary analysis, and developing custom defense mechanisms. I believe that security is not just a feature, but the core foundation upon which modern infrastructure must be built.
