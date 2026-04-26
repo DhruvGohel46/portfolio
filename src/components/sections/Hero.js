@@ -43,14 +43,14 @@ export default function Hero() {
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_60%)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_0%,transparent_60%)]" />
 
-      <div className="max-w-7xl mx-auto w-full relative z-10 grid lg:grid-cols-2 lg:gap-10 xl:gap-0 items-center min-h-[70vh]">
+      <div className="mt-16 max-w-7xl mx-auto w-full relative z-10 grid lg:grid-cols-2 lg:gap-10 xl:gap-0 items-center min-h-[70vh]">
         
         {/* Core Foreground Content (Left aligned/spanning) */}
         <motion.div
            initial={{ opacity: 0, x: -40 }}
            animate={{ opacity: 1, x: 0 }}
            transition={{ duration: 0.8, ease: "easeOut" }}
-           className="relative z-20 lg:pointer-events-auto mt-24 lg:mt-0"
+           className="relative z-20 lg:pointer-events-auto mt-12 lg:mt-0"
         >
 
           <h1 className="text-[3.5rem] sm:text-7xl md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-bold tracking-tighter leading-[1] md:leading-[0.95] mb-8 text-foreground uppercase relative z-20">
