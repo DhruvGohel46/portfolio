@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { IoBriefcaseOutline, IoTrophyOutline, IoFlashOutline, IoChevronDownOutline } from 'react-icons/io5';
+import { IoBriefcaseOutline, IoTrophyOutline, IoFlashOutline, IoChevronDownOutline, IoHardwareChipOutline, IoChatbubblesOutline, IoLogoGithub, IoDocumentTextOutline, IoVideocamOutline } from 'react-icons/io5';
 import SystemTag from '../ui/SystemTag';
 
 const experiences = [
@@ -18,23 +18,50 @@ const experiences = [
   },
   {
     type: 'HACKATHON',
+    id: 'sahaay',
+    title: 'SaHaay Emergency Grid',
+    role: 'Top 10 Finalist — GDG Autonomous Hacks 26 (Offline)',
+    period: 'JAN 2026',
+    desc: 'Cloud-native, offline-first autonomous ambulance dispatch system designed to replace human guesswork with intelligent orchestration. Engineered custom GSM/SMS transport layer ("Clockless" state machine), Ripple Search Algorithm for progressive driver discovery, and Self-Healing Failover for race conditions. Integrated API for traffic signal pre-emption (Green Corridor).',
+    details: ['<200ms Dispatch Latency', 'Node.js/Express', 'MongoDB', 'Ripple Search', 'GSM Failover'],
+    github: 'https://github.com/DhruvGohel46/emergency-dispatch-system',
+    icon: IoFlashOutline
+  },
+  {
+    type: 'HACKATHON',
+    id: 'agentic-quiz',
+    title: 'Autonomous Knowledge Extractor',
+    role: 'GDG Autonomous Hacks 26 (Online)',
+    period: 'JAN 2026',
+    desc: 'Developed an Agentic AI solution to transform educational content. Built an AI Agent that extracts key concepts automatically, organizes data hierarchically, generates unique quiz questions, and validates difficulty logic through self-checking mechanisms. Spearheaded the Frontend Architecture for intuitive knowledge visualization.',
+    details: ['Agentic AI', 'React', 'Self-Checking Logic', 'Knowledge Visualization'],
+    github: 'https://github.com/varun-ai69/Agentic---AI-',
+    icon: IoHardwareChipOutline
+  },
+  {
+    type: 'HACKATHON',
     id: 'railvision',
     title: 'RailVision AI',
     role: 'Top 6 Finalist — Hack Innovate 2026',
     period: 'FEB 2026',
-    desc: 'Engineered a high-performance AI pipeline to restore motion-blurred train footage and accurately extract wagon numbers.',
-    details: ['52 FPS on RTX 2050', '96.2% OCR Accuracy', 'NAFNet Deblurring'],
+    desc: 'Engineered a pipeline that ensures high visual fidelity while optimizing for computational efficiency for "Motion Blur Mitigation for High-Speed Wagon Monitoring". Utilized NAFNet (deblurring) and Real-ESRGAN (super-resolution). Optimized extraction logic to trigger OCR on every 5th frame.',
+    details: ['52 FPS on RTX 2050', '96.2% OCR Accuracy', 'NAFNet & Real-ESRGAN', 'Strategic OCR Sampling'],
+    github: 'https://github.com/DhruvGohel46/hack-innovate-2026',
     icon: IoTrophyOutline
   },
   {
     type: 'HACKATHON',
-    id: 'sahaay',
-    title: 'SaHaay Emergency Grid',
-    role: 'Top 10 Finalist — GDG Autonomous Hacks',
-    period: 'JAN 2026',
-    desc: 'Tactical, offline-first autonomous ambulance dispatch system with GSM failover layers for mission-critical reliability.',
-    details: ['<200ms Dispatch Latency', 'Self-Healing Failover', 'GSM Disaster Layer'],
-    icon: IoFlashOutline
+    id: 'wofo',
+    title: 'WOFO Enterprise Assistant',
+    role: 'Axios Hackathon',
+    period: 'DEC 2025',
+    desc: 'Built WOFO, a powerful RAG-based enterprise knowledge assistant. An offline-capable AI assistant designed to streamline enterprise knowledge management. Allows employees to instantly query internal documents and get accurate, context-aware answers without hallucination. Led the Frontend development and integrated secure Authentication.',
+    details: ['RAG', 'Gemini 3 Flash', 'Qdrant Vector DB', 'React', 'Node.js'],
+    github: 'https://github.com/varun-ai69/Axios-hackathon',
+    blog: 'https://medium.com/@kushwahavarun988/wofo-rag-based-enterprise-knowledge-offline-assistant-302dc887933a',
+    docs: 'https://dune-perfume-42d.notion.site/WOFO-RAG-Based-Enterprise-Knowledge-Assistant-2d95191e15438004b3c2c9bd8ca441f2?source=copy_link',
+    youtube: 'https://youtu.be/T9rLANULhrg?si=7Q0lAvDePAo_sbBG',
+    icon: IoChatbubblesOutline
   }
 ];
 
@@ -108,17 +135,42 @@ export default function Experience() {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-6 pb-6 md:px-8 md:pb-8 border-t border-border mt-2 pt-6">
+                        <div className="px-6 pb-6 md:px-8 md:pb-8 border-t border-border mt-2 pt-6 cursor-default" onClick={(e) => e.stopPropagation()}>
                           <p className="text-muted-foreground leading-relaxed md:w-2/3 mb-6">
                             {exp.desc}
                           </p>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-2 mb-6">
                             {exp.details.map(detail => (
                               <span key={detail} className="px-3 py-1.5 rounded bg-background border border-border text-[10px] font-mono tracking-widest uppercase text-muted-foreground">
                                 {detail}
                               </span>
                             ))}
                           </div>
+                          
+                          {(exp.github || exp.blog || exp.docs || exp.youtube) && (
+                            <div className="flex flex-wrap gap-6 pt-6 border-t border-border">
+                              {exp.github && (
+                                <a href={exp.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
+                                  <IoLogoGithub className="text-lg" /> GitHub
+                                </a>
+                              )}
+                              {exp.blog && (
+                                <a href={exp.blog} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
+                                  <IoDocumentTextOutline className="text-lg" /> Blog Post
+                                </a>
+                              )}
+                              {exp.docs && (
+                                <a href={exp.docs} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
+                                  <IoDocumentTextOutline className="text-lg" /> Notion Docs
+                                </a>
+                              )}
+                              {exp.youtube && (
+                                <a href={exp.youtube} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
+                                  <IoVideocamOutline className="text-lg" /> YouTube Demo
+                                </a>
+                              )}
+                            </div>
+                          )}
                         </div>
                       </motion.div>
                     )}

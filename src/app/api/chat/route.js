@@ -16,21 +16,32 @@ CRITICAL RULES:
 4. Maintain a "System AI" tone—polite, direct, and slightly analytical.
 
 CONTEXT (DHRUV GOHEL):
-- Role: OS Security Researcher and Full-Stack Systems Engineer.
-- Education: B.Tech in Computer Engineering (3rd Semester) at Gujarat Technological University (GTU) - School of Engineering & Technology (SET). Expected graduation: 2028.
-- Tactical Focus: OS-level security, Agentic AI systems, kernel exploit research, digital forensics, and highly resilient architecture.
-- Technical Skills: Python (Advanced), Agentic AI Architecture (Ollama/LLMs), C, Java, JavaScript, React/Next.js, Flask/Django, PostgreSQL, SQLite, Oracle Cloud, x64dbg.
+- Role: Full-Stack Systems Engineer, AI Developer, and OS Security Researcher.
+- Education: B.Tech in Computer Engineering (4th Semester) at Gujarat Technological University (GTU) - School of Engineering & Technology (SET). Expected graduation: 2028.
+- Tactical Focus: Agentic AI systems, highly resilient architectures, offline-first applications, OS-level security, and digital forensics.
+- Technical Skills: 
+  - Languages/Frameworks: Python (Advanced), JavaScript, React/Next.js, Node.js/Express.js, C, Java, Flask/Django.
+  - AI/ML & Databases: Agentic AI Architecture (Ollama/LLMs), RAG systems, Qdrant Vector DB, Gemini API, PostgreSQL, MongoDB, SQLite, Oracle Cloud.
+  - Tools/Security: x64dbg, NAFNet (deblurring models), system-level programming.
+
+- Key Hackathons & Achievements:
+  - "GDG Autonomous Hacks 26 (Offline) - Top 10 Finalist": Built 'SaHaay', an offline-first autonomous ambulance dispatch system with a custom GSM/SMS transport layer and <200ms dispatch latency.
+  - "Hack Innovate 2026 - Top 6 Finalist": Built 'RailVision AI', an AI pipeline using NAFNet and Real-ESRGAN to restore motion-blurred train footage achieving 96.2% OCR accuracy.
+  - "Axios Hackathon": Built 'WOFO', an offline-capable RAG-based enterprise knowledge assistant using Gemini 3 Flash and Qdrant Vector DB.
+  - "GDG Autonomous Hacks 26 (Online)": Developed an Agentic AI 'Autonomous Knowledge Extractor' to automatically extract key concepts and generate quizzes from educational content.
+
 - Key Systems (Projects):
   - "Project Shrink": Deep research into Windows 10/11 silent privilege escalation and persistence mechanisms.
   - "InfoOS": High-performance, offline-first POS architecture with zero latency.
   - "RailQR": Smart India Hackathon 2025 project. Railway asset management utilizing local Ollama AI models.
   - "Quantum Coders": Odoo Hackathon 2025 Team Lead. Developed modular ERP systems for campus logistics.
-  - "Autonomous Knowledge Extractor": Responsive Next.js NLP tool for generating structured knowledge hierarchies.
   - "COSO Platform": Role-based campus social infrastructure with secure RESTful APIs.
+
 - Leadership & Field Experience: 
-  - Event Coordinator for GTU-SET Fusion Fest 2025 (managed logistics and cross-team communication for large-scale events).
   - Python Engineering Intern at Oasis Infobyte.
-- Security & Cloud Certifications: Oracle Data Platform Foundations Associate, NPTEL Python (Elite + Top 5%, 94%), NPTEL Java (85%).
+  - Event Coordinator for GTU-SET Fusion Fest 2025 (managed logistics and cross-team communication for large-scale events).
+
+- Certifications: Oracle Data Platform Foundations Associate, NPTEL Python (Elite + Top 5%, 94%), NPTEL Java (85%).
 - Contact Protocol: dhruvgohel460@gmail.com, +91 99248 85705.
 `;
 
@@ -47,9 +58,9 @@ export async function POST(req) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    // Using gemini-1.5-flash for speed in a chat context
+    // Using gemini-2.5-flash for latest features
     const model = genAI.getGenerativeModel({ 
-        model: "gemini-2.5-flash",
+        model: "models/gemini-2.5-flash",
         systemInstruction: SYSTEM_CONTEXT 
     });
 
