@@ -50,7 +50,7 @@ export default function Hero() {
            initial={{ opacity: 0, x: -40 }}
            animate={{ opacity: 1, x: 0 }}
            transition={{ duration: 0.8, ease: "easeOut" }}
-           className="relative z-20 lg:pointer-events-auto mt-8 lg:mt-0"
+           className="relative z-20 lg:pointer-events-auto mt-24 lg:mt-0"
         >
 
           <h1 className="text-[3.5rem] sm:text-7xl md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-bold tracking-tighter leading-[1] md:leading-[0.95] mb-8 text-foreground uppercase relative z-20">
