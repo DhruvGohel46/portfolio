@@ -52,9 +52,6 @@ export default function Hero() {
            transition={{ duration: 0.8, ease: "easeOut" }}
            className="relative z-20 lg:pointer-events-auto mt-8 lg:mt-0"
         >
-          <div className="mb-6 pointer-events-auto">
-            <SystemTag label="CAPABILITY" value="CORE_STACK" />
-          </div>
 
           <h1 className="text-[3.5rem] sm:text-7xl md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-bold tracking-tighter leading-[1] md:leading-[0.95] mb-8 text-foreground uppercase relative z-20">
             Securing <br />
