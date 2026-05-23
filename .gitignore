@@ -10,7 +10,8 @@ node_modules/
 /.next/
 /out/
 
-
+# Production
+/build
 
 # Environment
 .env.local
