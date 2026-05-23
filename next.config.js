@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  outputFileTracing: false,
+  outputFileTracing: process.env.NETLIFY === 'true',
   images: {
     unoptimized: true,
   },
