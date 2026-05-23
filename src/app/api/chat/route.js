@@ -216,7 +216,7 @@ export async function POST(req) {
     const genAI = new GoogleGenerativeAI(apiKey);
     let result;
     try {
-      // Primary model: gemini-2.5-flash as requested
+      // Primary model: gemini-3.5-flash
       const model = genAI.getGenerativeModel({ 
           model: "models/gemini-3.5-flash",
           systemInstruction: SYSTEM_CONTEXT,
@@ -226,7 +226,7 @@ export async function POST(req) {
       });
       result = await model.generateContent(prompt);
     } catch (e) {
-      console.warn("Primary gemini-3.5-flash model failed or not registered, falling back to 2.5-flash:", e);
+      console.warn("Primary gemini-3.5-flash model failed or not registered, falling back to gemini-2.5-flash:", e);
       // Fallback model: gemini-2.5-flash
       const fallbackModel = genAI.getGenerativeModel({ 
           model: "models/gemini-2.5-flash",
