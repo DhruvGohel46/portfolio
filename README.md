@@ -94,7 +94,6 @@ Display of professional certifications with scores and achievements.
 ### Projects
 Showcase of 5 major projects with descriptions, tech stacks, and GitHub links:
 - RailQR (Smart India Hackathon 2025)
-- Quantum Coders (Odoo Hackathon Winner)
 - PPT Summary Maker
 - COSO (Campus Social Platform)
 - Falak Salon (Client Freelance)

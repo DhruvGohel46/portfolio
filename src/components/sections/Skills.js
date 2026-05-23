@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoShieldCheckmarkOutline, IoCodeSlashOutline, IoTerminalOutline } from 'react-icons/io5';
 import SystemTag from '../ui/SystemTag';
@@ -28,6 +28,21 @@ const categories = [
 
 export default function Skills() {
   const [active, setActive] = useState(categories[0].id);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setActive((prevActive) => {
+        const currentIndex = categories.findIndex(cat => cat.id === prevActive);
+        const nextIndex = (currentIndex + 1) % categories.length;
+        return categories[nextIndex].id;
+      });
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <section id="skills" className="py-32 px-6 bg-muted/30">
@@ -41,7 +56,11 @@ export default function Skills() {
           </h2>
         </header>
 
-        <div className="grid lg:grid-cols-[1fr_2fr] gap-12">
+        <div 
+          className="grid lg:grid-cols-[1fr_2fr] gap-12"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Tabs */}
           <div className="flex flex-col gap-2">
             {categories.map((cat, index) => {

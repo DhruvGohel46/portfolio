@@ -2,7 +2,19 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { IoBriefcaseOutline, IoTrophyOutline, IoFlashOutline, IoChevronDownOutline, IoHardwareChipOutline, IoChatbubblesOutline, IoLogoGithub, IoDocumentTextOutline, IoVideocamOutline } from 'react-icons/io5';
+import { 
+  IoBriefcaseOutline, 
+  IoTrophyOutline, 
+  IoFlashOutline, 
+  IoChevronDownOutline, 
+  IoHardwareChipOutline, 
+  IoChatbubblesOutline, 
+  IoLogoGithub, 
+  IoDocumentTextOutline, 
+  IoVideocamOutline,
+  IoMedalOutline,
+  IoArrowForwardOutline
+} from 'react-icons/io5';
 import SystemTag from '../ui/SystemTag';
 
 const experiences = [
@@ -19,8 +31,8 @@ const experiences = [
   {
     type: 'HACKATHON',
     id: 'sahaay',
-    title: 'SaHaay Emergency Grid',
-    role: 'Top 10 Finalist — GDG Autonomous Hacks 26 (Offline)',
+    title: 'GDG Autonomous Hacks 26 (Offline)',
+    role: 'Top 10 Finalist — SaHaay Emergency Grid',
     period: 'JAN 2026',
     desc: 'Cloud-native, offline-first autonomous ambulance dispatch system designed to replace human guesswork with intelligent orchestration. Engineered custom GSM/SMS transport layer ("Clockless" state machine), Ripple Search Algorithm for progressive driver discovery, and Self-Healing Failover for race conditions. Integrated API for traffic signal pre-emption (Green Corridor).',
     details: ['<200ms Dispatch Latency', 'Node.js/Express', 'MongoDB', 'Ripple Search', 'GSM Failover'],
@@ -30,8 +42,8 @@ const experiences = [
   {
     type: 'HACKATHON',
     id: 'agentic-quiz',
-    title: 'Autonomous Knowledge Extractor',
-    role: 'GDG Autonomous Hacks 26 (Online)',
+    title: 'GDG Autonomous Hacks 26 (Online)',
+    role: 'Participant — Autonomous Knowledge Extractor',
     period: 'JAN 2026',
     desc: 'Developed an Agentic AI solution to transform educational content. Built an AI Agent that extracts key concepts automatically, organizes data hierarchically, generates unique quiz questions, and validates difficulty logic through self-checking mechanisms. Spearheaded the Frontend Architecture for intuitive knowledge visualization.',
     details: ['Agentic AI', 'React', 'Self-Checking Logic', 'Knowledge Visualization'],
@@ -41,8 +53,8 @@ const experiences = [
   {
     type: 'HACKATHON',
     id: 'railvision',
-    title: 'RailVision AI',
-    role: 'Top 6 Finalist — Hack Innovate 2026',
+    title: 'Hack Innovate 2026',
+    role: 'Top 6 Finalist — RailVision AI',
     period: 'FEB 2026',
     desc: 'Engineered a pipeline that ensures high visual fidelity while optimizing for computational efficiency for "Motion Blur Mitigation for High-Speed Wagon Monitoring". Utilized NAFNet (deblurring) and Real-ESRGAN (super-resolution). Optimized extraction logic to trigger OCR on every 5th frame.',
     details: ['52 FPS on RTX 2050', '96.2% OCR Accuracy', 'NAFNet & Real-ESRGAN', 'Strategic OCR Sampling'],
@@ -52,8 +64,8 @@ const experiences = [
   {
     type: 'HACKATHON',
     id: 'wofo',
-    title: 'WOFO Enterprise Assistant',
-    role: 'Axios Hackathon',
+    title: 'Axios Hackathon',
+    role: 'Participant — WOFO Enterprise Assistant',
     period: 'DEC 2025',
     desc: 'Built WOFO, a powerful RAG-based enterprise knowledge assistant. An offline-capable AI assistant designed to streamline enterprise knowledge management. Allows employees to instantly query internal documents and get accurate, context-aware answers without hallucination. Led the Frontend development and integrated secure Authentication.',
     details: ['RAG', 'Gemini 3 Flash', 'Qdrant Vector DB', 'React', 'Node.js'],
@@ -61,7 +73,19 @@ const experiences = [
     blog: 'https://medium.com/@kushwahavarun988/wofo-rag-based-enterprise-knowledge-offline-assistant-302dc887933a',
     docs: 'https://dune-perfume-42d.notion.site/WOFO-RAG-Based-Enterprise-Knowledge-Assistant-2d95191e15438004b3c2c9bd8ca441f2?source=copy_link',
     youtube: 'https://youtu.be/T9rLANULhrg?si=7Q0lAvDePAo_sbBG',
+    projectMatch: 'wofo-assistant',
     icon: IoChatbubblesOutline
+  },
+  {
+    type: 'HACKATHON',
+    id: 'sih',
+    title: 'Smart India Hackathon',
+    role: 'Participant (GTU Representative)',
+    period: '2025',
+    desc: 'Railway asset tracking and fault prediction system. Developed RailQR, a smart logistics platform using local AI models to scan QR codes on tracks and automatically parse, clean, and map asset telemetry database queries in offline scenarios.',
+    details: ['RailQR Logistics', 'Python/Ollama', 'QR Metrics', 'React', 'Local AI Models'],
+    projectMatch: 'railqr-logistics',
+    icon: IoMedalOutline
   }
 ];
 
@@ -80,7 +104,7 @@ export default function Experience() {
             Experience & Output.
           </h2>
         </header>
-
+ 
         <div className="flex flex-col gap-4">
           {experiences.map((exp, index) => {
             const isExpanded = expanded === exp.id;
@@ -147,7 +171,7 @@ export default function Experience() {
                             ))}
                           </div>
                           
-                          {(exp.github || exp.blog || exp.docs || exp.youtube) && (
+                          {(exp.github || exp.blog || exp.docs || exp.youtube || exp.projectMatch) && (
                             <div className="flex flex-wrap gap-6 pt-6 border-t border-border">
                               {exp.github && (
                                 <a href={exp.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
@@ -168,6 +192,21 @@ export default function Experience() {
                                 <a href={exp.youtube} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
                                   <IoVideocamOutline className="text-lg" /> YouTube Demo
                                 </a>
+                              )}
+                              {exp.projectMatch && (
+                                <button 
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    window.dispatchEvent(new CustomEvent('highlight-project', { detail: { id: exp.projectMatch } }));
+                                    const el = document.getElementById(exp.projectMatch);
+                                    if (el) {
+                                      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    }
+                                  }}
+                                  className="flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-hover transition-colors cursor-pointer bg-transparent border-0 p-0 outline-none"
+                                >
+                                  <IoArrowForwardOutline className="text-lg" /> View Project Details
+                                </button>
                               )}
                             </div>
                           )}

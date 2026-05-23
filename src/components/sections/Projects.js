@@ -1,11 +1,13 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { IoArrowForwardOutline, IoLogoGithub } from 'react-icons/io5';
 import SystemTag from '../ui/SystemTag';
 
 const projects = [
   {
+    id: 'project-shrink',
     title: 'Project Shrink',
     category: 'OS SECURITY',
     desc: 'Deep research into silent privilege escalation and persistence mechanisms on Windows 10/11 environments. Educational research only.',
@@ -15,6 +17,7 @@ const projects = [
     github: 'https://github.com/DhruvGohel46/Shrink'
   },
   {
+    id: 'infoos-pos',
     title: 'InfoOS POS',
     category: 'SYS ARCHITECTURE',
     desc: 'High-performance, offline-first POS & inventory system with zero latency and thermal automation for retail environments.',
@@ -24,6 +27,7 @@ const projects = [
     github: 'https://github.com/DhruvGohel46/Rebill'
   },
   {
+    id: 'railqr-logistics',
     title: 'RailQR Logistics',
     category: 'AI / EMBEDDED',
     desc: 'Smart India Hackathon project for railway asset tracking utilizing local Ollama AI for fault data normalization and structuring.',
@@ -33,6 +37,17 @@ const projects = [
     github: '#'
   },
   {
+    id: 'wofo-assistant',
+    title: 'WOFO Enterprise Assistant',
+    category: 'AI / RAG',
+    desc: 'Axios Hackathon project. A powerful offline-capable RAG-based enterprise knowledge assistant designed to securely query internal documentation using Gemini and Qdrant DB.',
+    tech: ['Gemini 3 Flash', 'Qdrant DB', 'React', 'Node.js'],
+    image: '/projects/wofo.png',
+    link: 'https://dune-perfume-42d.notion.site/WOFO-RAG-Based-Enterprise-Knowledge-Assistant-2d95191e15438004b3c2c9bd8ca441f2?source=copy_link',
+    github: 'https://github.com/varun-ai69/Axios-hackathon'
+  },
+  {
+    id: 'coso-platform',
     title: 'COSO Platform',
     category: 'FULLSTACK ENG',
     desc: 'Campus wide social infrastructure with Role-Based Access Control and multi-layered data encryption mechanisms natively.',
@@ -42,26 +57,34 @@ const projects = [
     github: '#'
   },
   {
-    title: 'Quantum Coders',
-    category: 'ERP DEV',
-    desc: 'Odoo Hackathon 2025 Team Lead. Built custom Odoo ERP modules for campus club management — automating events, membership payments, and analytics dashboards.',
-    tech: ['Python', 'Odoo ERP', 'PostgreSQL', 'REST API'],
-    image: '/projects/Quantum Coders .png',
-    link: '#',
-    github: '#'
-  },
-  {
+    id: 'falak-al-buraimi-salon',
     title: 'Falak Al Buraimi Salon',
     category: 'WEB DEV',
     desc: 'Freelance responsive salon website for a client in Oman — animated offers, service cards, Google Maps embed. 90+ Lighthouse score.',
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind'],
     image: '/projects/Falak Al Buraimi Beauty Salon.png',
-    link: '#',
+    link: 'https://falak-al-buraimi-beauty-saloon.netlify.app/',
     github: '#'
   }
 ];
 
 export default function Projects() {
+  const [highlightedId, setHighlightedId] = useState(null);
+
+  useEffect(() => {
+    const handleHighlight = (e) => {
+      if (e.detail && e.detail.id) {
+        setHighlightedId(e.detail.id);
+        const timer = setTimeout(() => {
+          setHighlightedId(null);
+        }, 3000);
+        return () => clearTimeout(timer);
+      }
+    };
+    window.addEventListener('highlight-project', handleHighlight);
+    return () => window.removeEventListener('highlight-project', handleHighlight);
+  }, []);
+
   return (
     <section id="projects" className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
@@ -86,12 +109,17 @@ export default function Projects() {
         <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-6 md:gap-8 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
           {projects.map((project, index) => (
             <motion.div
+              id={project.id}
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="group flex flex-col border border-border bg-background rounded-xl overflow-hidden hover:border-muted-foreground/30 transition-colors flex-shrink-0 w-[85vw] md:w-auto snap-center"
+              className={`group flex flex-col border rounded-xl overflow-hidden hover:border-muted-foreground/30 flex-shrink-0 w-[85vw] md:w-auto snap-center transition-all duration-500 scroll-mt-28 ${
+                highlightedId === project.id 
+                  ? 'border-accent ring-2 ring-accent/50 shadow-[0_0_25px_rgba(99,102,241,0.4)] bg-accent/5 scale-[1.02]' 
+                  : 'border-border bg-background'
+              }`}
             >
               <div className="relative aspect-[2/1] overflow-hidden bg-muted border-b border-border">
                 <img 
