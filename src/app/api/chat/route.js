@@ -216,7 +216,7 @@ export async function POST(req) {
     const genAI = new GoogleGenerativeAI(apiKey);
     let result;
     try {
-      // Primary model: gemini-3.5-flash as requested
+      // Primary model: gemini-2.5-flash as requested
       const model = genAI.getGenerativeModel({ 
           model: "models/gemini-3.5-flash",
           systemInstruction: SYSTEM_CONTEXT,
