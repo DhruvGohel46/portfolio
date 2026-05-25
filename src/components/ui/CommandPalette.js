@@ -29,13 +29,13 @@ export default function CommandPalette({ isOpen, onClose }) {
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 w-[90%] max-w-2xl z-50 bg-background border border-border rounded-xl shadow-2xl overflow-hidden shadow-black/10"
+            initial={{ opacity: 0, scale: 0.95, x: "-50%", y: 15 }}
+            animate={{ opacity: 1, scale: 1, x: "-50%", y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, x: "-50%", y: 15 }}
+            className="fixed top-12 sm:top-[15%] left-1/2 w-[95%] sm:w-[90%] max-w-2xl z-50 bg-background border border-border rounded-xl shadow-2xl overflow-hidden shadow-black/10"
           >
             {/* Header */}
-            <div className="flex items-center gap-3 p-4 border-b border-border">
+            <div className="flex items-center gap-3 p-3 sm:p-4 border-b border-border">
               <IoSearchOutline className="text-muted-foreground text-xl" />
               <input 
                 type="text" 
@@ -52,7 +52,7 @@ export default function CommandPalette({ isOpen, onClose }) {
             </div>
 
             {/* Content list */}
-            <div className="p-2 h-80 overflow-y-auto">
+            <div className="p-2 h-auto max-h-[50vh] sm:h-80 overflow-y-auto">
               <div className="px-2 py-2 mb-1">
                 <SystemTag label="MENU_SELECTION" value="NAVIGATION" />
               </div>
@@ -63,7 +63,7 @@ export default function CommandPalette({ isOpen, onClose }) {
                     key={link.id}
                     href={link.href}
                     onClick={onClose}
-                    className="flex items-center justify-between p-4 rounded-lg hover:bg-muted group transition-colors"
+                    className="flex items-center justify-between p-3 sm:p-4 rounded-lg hover:bg-muted group transition-colors"
                   >
                     <div className="flex items-center gap-4">
                       <span className="text-xs font-mono text-muted-foreground">{link.id}</span>
@@ -76,7 +76,7 @@ export default function CommandPalette({ isOpen, onClose }) {
             </div>
 
             {/* Footer */}
-            <div className="p-4 border-t border-border bg-muted/50 flex items-center justify-between">
+            <div className="p-3 sm:p-4 border-t border-border bg-muted/50 hidden sm:flex items-center justify-between">
               <div className="flex gap-4">
                 <span className="flex items-center gap-1 text-xs text-muted-foreground font-mono"><kbd className="bg-background border border-border rounded px-1.5 py-0.5">↑</kbd><kbd className="bg-background border border-border rounded px-1.5 py-0.5">↓</kbd> to navigate</span>
                 <span className="flex items-center gap-1 text-xs text-muted-foreground font-mono"><kbd className="bg-background border border-border rounded px-1.5 py-0.5">esc</kbd> to close</span>

@@ -6,9 +6,9 @@ import SystemTag from '../ui/SystemTag';
 
 export default function About() {
   return (
-    <section id="about" className="py-32 px-6">
+    <section id="about" className="py-16 sm:py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <header className="mb-20">
+        <header className="mb-12 sm:mb-20">
           <div className="mb-6">
             <SystemTag label="IDENT_FILE" value="DHRUV.JSON" />
           </div>
@@ -17,7 +17,7 @@ export default function About() {
           </h2>
         </header>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start border-t border-border pt-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start border-t border-border pt-12">
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -32,7 +32,7 @@ export default function About() {
               Beyond traditional software engineering, I specialize in OS-level security, low-level binary analysis, and developing custom defense mechanisms. I believe that security is not just a feature, but the core foundation upon which modern infrastructure must be built.
             </p>
             
-            <div className="pt-8 mt-8 grid grid-cols-2 gap-8 border-t border-border">
+            <div className="pt-8 mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 border-t border-border">
               <div>
                 <SystemTag label="PRIMARY_DISCIPLINE" value="Kernel Security" />
               </div>

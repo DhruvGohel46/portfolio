@@ -7,16 +7,16 @@ import MagneticButton from '../ui/MagneticButton';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-32 px-6">
+    <section id="contact" className="py-16 sm:py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
           <div>
             <div className="mb-6">
               <SystemTag label="COMMUNICATION" value="SECURE_CHANNEL" />
             </div>
             
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-8">
               Initiate <br /> Connection.
             </h2>
             

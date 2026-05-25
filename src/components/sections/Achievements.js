@@ -12,44 +12,27 @@ import {
 } from 'react-icons/io5';
 import SystemTag from '../ui/SystemTag';
 
-const achievements = [
-  {
-    title: 'NPTEL Python — Top 5%',
-    institution: 'IIT Madras',
-    score: '94% ELITE',
-    image: '/Achivments/joy of python.png',
-    icon: IoStarOutline
-  },
-  {
-    title: 'Oracle Data Platform',
-    institution: 'ORACLE CERTIFIED',
-    score: 'ASSOCIATE',
-    image: '/Achivments/Oracle Foundation Associate.jpg',
-    icon: IoRibbonOutline
-  },
-  {
-    title: 'NPTEL Cloud Computing',
-    institution: 'IIT KHARAGPUR',
-    score: '87% ELITE + SILVER',
-    image: '/Achivments/NPTEL Cloud Computing.png',
-    icon: IoCloudOutline
-  },
-  {
-    title: 'NPTEL Java',
-    institution: 'IIT KHARAGPUR',
-    score: '85% ELITE',
-    image: '/Achivments/nptel_Java.jpg',
-    icon: IoCodeSlashOutline
-  }
-];
+import { achievements as achievementsData } from '@/utils/portfolioData';
+
+const iconMap = {
+  star: IoStarOutline,
+  ribbon: IoRibbonOutline,
+  cloud: IoCloudOutline,
+  code: IoCodeSlashOutline,
+};
+
+const achievements = achievementsData.map(ach => ({
+  ...ach,
+  icon: iconMap[ach.iconName]
+}));
 
 export default function Achievements() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <section id="achievements" className="py-32 px-6 bg-muted/30">
+    <section id="achievements" className="py-16 sm:py-32 px-6 bg-muted/30">
       <div className="max-w-7xl mx-auto">
-        <header className="mb-20">
+        <header className="mb-12 sm:mb-20">
           <div className="mb-6">
             <SystemTag label="RECORDS" value="CERTIFICATIONS" />
           </div>
@@ -114,7 +97,7 @@ export default function Achievements() {
           >
             <button 
               onClick={() => setSelectedImage(null)}
-              className="absolute top-6 right-6 text-white hover:text-accent transition-colors p-2 bg-white/10 hover:bg-white/20 rounded-full z-50 cursor-pointer"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-accent transition-colors p-2 bg-white/10 hover:bg-white/20 rounded-full z-50 cursor-pointer"
               aria-label="Close modal"
             >
               <IoCloseOutline className="text-3xl" />

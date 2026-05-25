@@ -69,6 +69,20 @@ export default function AIAssistant() {
   };
 
   const renderMessageContent = (content) => {
+    const mdComponents = {
+      a: ({ href, children }) => (
+        <a 
+          href={href} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-accent hover:text-accent-hover underline font-bold"
+        >
+          {children}
+        </a>
+      ),
+      p: ({ children }) => <span className="inline">{children}</span>
+    };
+
     try {
       const parsed = JSON.parse(content);
       if (parsed && (parsed.paragraphs || parsed.heading || parsed.bullets)) {
@@ -80,24 +94,26 @@ export default function AIAssistant() {
               </div>
             )}
             {parsed.paragraphs && parsed.paragraphs.map((para, idx) => (
-              <p key={idx} className="text-foreground font-bold dark:font-medium whitespace-pre-wrap">
-                {para}
-              </p>
+              <div key={idx} className="text-foreground font-bold dark:font-medium whitespace-pre-wrap">
+                <ReactMarkdown components={mdComponents}>{para}</ReactMarkdown>
+              </div>
             ))}
             {parsed.bullets && parsed.bullets.length > 0 && (
               <ul className="list-none space-y-2 pl-1.5 my-2">
                 {parsed.bullets.map((bullet, idx) => (
                   <li key={idx} className="flex items-start gap-2.5 text-zinc-800 dark:text-zinc-200 font-bold dark:font-medium">
                     <span className="text-accent font-extrabold select-none">❯</span>
-                    <span className="flex-1">{bullet}</span>
+                    <span className="flex-1">
+                      <ReactMarkdown components={mdComponents}>{bullet}</ReactMarkdown>
+                    </span>
                   </li>
                 ))}
               </ul>
             )}
             {parsed.closing && (
-              <p className="text-[11px] text-zinc-600 dark:text-white border-t border-zinc-200 dark:border-zinc-800/80 pt-2.5 mt-3 font-semibold dark:font-normal">
-                {parsed.closing}
-              </p>
+              <div className="text-[11px] text-zinc-600 dark:text-white border-t border-zinc-200 dark:border-zinc-800/80 pt-2.5 mt-3 font-semibold dark:font-normal">
+                <ReactMarkdown components={mdComponents}>{parsed.closing}</ReactMarkdown>
+              </div>
             )}
           </div>
         );
@@ -107,8 +123,18 @@ export default function AIAssistant() {
     }
 
     return (
-      <div className="prose prose-sm dark:prose-invert max-w-none break-words font-mono text-xs leading-relaxed text-left">
-        <ReactMarkdown>{content}</ReactMarkdown>
+      <div className="prose prose-sm dark:prose-invert max-w-none break-words font-mono text-xs leading-relaxed text-left [&_a]:text-accent [&_a]:hover:text-accent-hover [&_a]:underline [&_a]:font-bold">
+        <ReactMarkdown 
+          components={{
+            a: ({ href, children }) => (
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {children}
+              </a>
+            )
+          }}
+        >
+          {content}
+        </ReactMarkdown>
       </div>
     );
   };
@@ -137,21 +163,24 @@ export default function AIAssistant() {
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.96 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-[104px] sm:bottom-8 left-6 sm:left-8 px-9 py-4 bg-white/90 dark:bg-zinc-950/90 hover:bg-zinc-50 dark:hover:bg-zinc-900/90 text-foreground border-2 border-accent/50 dark:border-accent/60 hover:border-accent rounded-full shadow-[0_0_20px_rgba(99,102,241,0.15)] dark:shadow-[0_0_25px_rgba(99,102,241,0.35)] hover:shadow-[0_0_35px_rgba(99,102,241,0.6)] flex items-center gap-4 z-50 group transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-md"
+            className="fixed bottom-[100px] sm:bottom-8 left-6 sm:left-8 px-4 py-2 sm:px-9 sm:py-4 bg-white/90 dark:bg-zinc-950/90 hover:bg-zinc-50 dark:hover:bg-zinc-900/90 text-foreground border-2 border-accent/50 dark:border-accent/60 hover:border-accent rounded-full shadow-[0_0_20px_rgba(99,102,241,0.15)] dark:shadow-[0_0_25px_rgba(99,102,241,0.35)] hover:shadow-[0_0_35px_rgba(99,102,241,0.6)] flex items-center gap-3 sm:gap-4 z-50 group transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-md"
           >
             {/* Glowing Accent Aura on Hover */}
             <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             {/* Glowing Icon (Indigo themed sparkles) */}
-            <div className="relative flex items-center justify-center w-11 h-11 rounded-full bg-accent/10 border border-accent/25 group-hover:bg-accent/20 transition-colors">
-              <IoSparklesOutline className="text-xl text-accent animate-pulse" />
+            <div className="relative flex items-center justify-center w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-accent/10 border border-accent/25 group-hover:bg-accent/20 transition-colors flex-shrink-0">
+              <IoSparklesOutline className="text-base sm:text-xl text-accent animate-pulse" />
               <div className="absolute inset-0 blur-md bg-accent/15 animate-pulse rounded-full" />
             </div>
 
             {/* Labels */}
             <div className="flex flex-col items-start leading-none z-10 font-mono text-left">
-              <span className="text-[10px] tracking-[0.25em] text-accent/80 font-bold uppercase">PORTFOLIO_QUERY_CORE</span>
-              <span className="text-base font-black tracking-wide text-foreground mt-1.5 select-none">ASK COGNITIVE AGENT</span>
+              <span className="hidden sm:inline text-[10px] tracking-[0.25em] text-accent/80 font-bold uppercase">PORTFOLIO_QUERY_CORE</span>
+              <span className="text-xs sm:text-base font-bold sm:font-black tracking-wider sm:tracking-wide text-foreground mt-0 sm:mt-1.5 select-none">
+                <span className="sm:hidden">ASK AI</span>
+                <span className="hidden sm:inline">ASK COGNITIVE AGENT</span>
+              </span>
             </div>
           </motion.button>
         )}

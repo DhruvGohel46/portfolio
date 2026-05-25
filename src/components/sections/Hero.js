@@ -38,12 +38,12 @@ export default function Hero() {
     <section 
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[100svh] lg:h-screen flex items-center pt-32 pb-24 lg:pt-0 lg:pb-0 px-6 overflow-hidden perspective-[1200px]"
+      className="relative min-h-[100svh] lg:h-screen flex items-center pt-20 pb-16 lg:pt-0 lg:pb-0 px-6 overflow-hidden perspective-[1200px]"
     >
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_60%)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_0%,transparent_60%)]" />
 
-      <div className="mt-16 max-w-7xl mx-auto w-full relative z-10 grid lg:grid-cols-2 lg:gap-10 xl:gap-0 items-center min-h-[70vh]">
+      <div className="mt-8 lg:mt-16 max-w-7xl mx-auto w-full relative z-10 grid lg:grid-cols-2 lg:gap-10 xl:gap-0 items-center min-h-[70vh]">
         
         {/* Core Foreground Content (Left aligned/spanning) */}
         <motion.div
@@ -53,7 +53,7 @@ export default function Hero() {
            className="relative z-20 lg:pointer-events-auto mt-12 lg:mt-0"
         >
 
-          <h1 className="text-[3.5rem] sm:text-7xl md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-bold tracking-tighter leading-[1] md:leading-[0.95] mb-8 text-foreground uppercase relative z-20">
+          <h1 className="text-[2.5rem] sm:text-7xl md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-bold tracking-tighter leading-[1] md:leading-[0.95] mb-8 text-foreground uppercase relative z-20">
             Securing <br />
             <span 
               onMouseEnter={trigger}
@@ -64,20 +64,9 @@ export default function Hero() {
             Systems.
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-10 md:mb-14 leading-relaxed backdrop-blur-sm bg-background/30 p-2 sm:p-0 rounded-xl sm:rounded-none border border-transparent hover:border-border sm:border-none transition-colors">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-0 leading-relaxed backdrop-blur-sm bg-background/30 p-2 sm:p-0 rounded-xl sm:rounded-none border border-transparent hover:border-border sm:border-none transition-colors">
             I am <span className="font-semibold text-foreground">Dhruv Gohel</span>, an OS Security Researcher and Engineer focused on tactical defense, kernel-level exploit research, and highly resilient architecture.
           </p>
-
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 items-stretch sm:items-center w-full mt-2">
-            <MagneticButton primary className="px-6 py-4 sm:py-3.5 rounded-xl sm:rounded-lg group w-full sm:w-auto flex justify-center items-center shadow-lg shadow-accent/20">
-              <span className="flex items-center gap-2">
-                Explore Research <IoChevronForwardOutline className="group-hover:translate-x-1 transition-transform" />
-              </span>
-            </MagneticButton>
-            <MagneticButton className="px-6 py-4 sm:py-3.5 rounded-xl sm:rounded-lg w-full sm:w-auto text-center flex justify-center items-center bg-background/50 backdrop-blur-md">
-              Contact
-            </MagneticButton>
-          </div>
         </motion.div>
 
         {/* 3D Floating OS Process Card (Stacks on Mobile, Overlaps on Desktop) */}

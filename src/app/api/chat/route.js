@@ -1,4 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { projects, experiences, skills, achievements } from "@/utils/portfolioData";
 
 export const dynamic = 'force-dynamic';
 
@@ -12,8 +13,17 @@ Your primary directive is to answer questions about Dhruv's professional backgro
 CRITICAL RULES:
 1. ALWAYS speak in the 3rd person (e.g., "Dhruv is a Computer Science Engineer", "He built Project Shrink").
 2. Keep answers concise, technical, and professional. 
-3. Never invent information. If asked something not in the context below, state that you do not have that data clearance.
+3. Never invent information. If asked something not in the database context, state that you do not have that data clearance.
 4. Maintain a "System AI" tone—polite, direct, and slightly analytical.
+
+DATABASE PARSING PROTOCOL:
+You are equipped with a live copy of Dhruv's portfolio database appended under "PORTFOLIO DATABASE ENTRY".
+When answering questions about technical skills, experiences, projects, credentials, achievements, or direct links (such as GitHub, Notion Docs, Medium Blog, or Live Deployment):
+1. Parse the PORTFOLIO DATABASE ENTRY.
+2. Locate the corresponding item(s) or entries.
+3. Extract information and URLs directly from the properties (e.g., 'github', 'link', 'blog', 'docs', 'youtube', 'youtubeWin10', 'youtubeWin11', 'skills', 'score', 'institution').
+4. Format the details and links inside your markdown response.
+Do not state that you do not have data clearance for information or links that exist in the appended database entry.
 
 THINKING STEPS PROTOCOL:
 You possess internal thinking power. To fulfill a user request, you must execute a series of steps simulating getters and setters to parse the portfolio database:
@@ -170,35 +180,10 @@ Response:
   }
 }
 
-CONTEXT (DHRUV GOHEL):
+CONTEXT (ABOUT DHRUV GOHEL):
 - Role: Full-Stack Systems Engineer, AI Developer, and OS Security Researcher.
 - Education: B.Tech in Computer Engineering (4th Semester) at Gujarat Technological University (GTU) - School of Engineering & Technology (SET). Expected graduation: 2028.
-- Tactical Focus: Agentic AI systems, highly resilient architectures, offline-first applications, OS-level security, and digital forensics.
-- Technical Skills: 
-  - Languages/Frameworks: Python (Advanced), JavaScript, React/Next.js, Node.js/Express.js, C, Java, Flask/Django.
-  - AI/ML & Databases: Agentic AI Architecture (Ollama/LLMs), RAG systems, Qdrant Vector DB, Gemini API, PostgreSQL, MongoDB, SQLite, Oracle Cloud.
-  - Tools/Security: x64dbg, NAFNet (deblurring models), system-level programming.
-
-- Key Hackathons & Experience:
-  - "GDG Autonomous Hacks 26 (Offline) - Top 10 Finalist": Built 'SaHaay', an offline-first autonomous ambulance dispatch system with a custom GSM/SMS transport layer and <200ms dispatch latency.
-  - "Hack Innovate 2026 - Top 6 Finalist": Built 'RailVision AI', an AI pipeline using NAFNet and Real-ESRGAN to restore motion-blurred train footage achieving 96.2% OCR accuracy.
-  - "Axios Hackathon": Built 'WOFO', an offline-capable RAG-based enterprise knowledge assistant using Gemini 3 Flash and Qdrant Vector DB.
-  - "GDG Autonomous Hacks 26 (Online)": Developed an Agentic AI 'Autonomous Knowledge Extractor' to automatically extract key concepts and generate quizzes from educational content.
-  - "Smart India Hackathon (GTU Representative / Participant)": Built 'RailQR Logistics', a smart logistics and railway asset tracking system that parses, structures, and queries fault telemetry database queries using local Ollama AI models.
-
-- Key Systems (Projects):
-  - "Project Shrink": Deep research into Windows 10/11 silent privilege escalation and persistence mechanisms.
-  - "InfoOS POS": High-performance, offline-first POS architecture with zero latency.
-  - "RailQR Logistics": Smart India Hackathon project. Railway asset management utilizing local Ollama AI models.
-  - "WOFO Enterprise Assistant": Axios Hackathon project. RAG-based offline assistant utilizing Gemini 3 Flash and Qdrant DB.
-  - "COSO Platform": Role-based campus social infrastructure with secure RESTful APIs.
-
-- Leadership & Field Experience: 
-  - Python Engineering Intern at Oasis Infobyte.
-  - Event Coordinator for GTU-SET Fusion Fest 2025 (managed logistics and cross-team communication for large-scale events).
-
-- Certifications: Oracle Data Platform Foundations Associate, NPTEL Python (Elite + Top 5%, 94%), NPTEL Cloud Computing (Elite + Silver, Score 87%, Top 5% Topper), NPTEL Java (Elite, 85%).
-- Contact Protocol: dhruvgohel460@gmail.com, +91 99248 85705.
+- Core Identity: Focuses on agentic AI setups, highly resilient systems, offline-first architectures, and low-latency system-level engineering.
 `;
 
 export async function POST(req) {
@@ -213,13 +198,39 @@ export async function POST(req) {
       return new Response(JSON.stringify({ error: 'Prompt is required' }), { status: 400 });
     }
 
+    // Dynamic database context to pass to the AI model
+    const cleanProjects = projects.map(({ id, title, category, desc, tech, link, github, youtubeWin10, youtubeWin11 }) => ({
+      id, title, category, desc, tech, link, github, youtubeWin10, youtubeWin11
+    }));
+
+    const cleanExperiences = experiences.map(({ id, type, title, role, period, desc, details, github, blog, docs, youtube }) => ({
+      id, type, title, role, period, desc, details, github, blog, docs, youtube
+    }));
+
+    const DATABASE_CONTEXT = `
+PORTFOLIO DATABASE ENTRY:
+PROJECTS:
+${JSON.stringify(cleanProjects, null, 2)}
+
+EXPERIENCES:
+${JSON.stringify(cleanExperiences, null, 2)}
+
+TECHNICAL_SKILLS_ARSENAL:
+${JSON.stringify(skills, null, 2)}
+
+QUALIFICATIONS_AND_CERTIFICATIONS:
+${JSON.stringify(achievements, null, 2)}
+`;
+
+    const FULL_SYSTEM_CONTEXT = `${SYSTEM_CONTEXT}\n\n${DATABASE_CONTEXT}`;
+
     const genAI = new GoogleGenerativeAI(apiKey);
     let result;
     try {
       // Primary model: gemini-3.5-flash
       const model = genAI.getGenerativeModel({ 
           model: "models/gemini-3.5-flash",
-          systemInstruction: SYSTEM_CONTEXT,
+          systemInstruction: FULL_SYSTEM_CONTEXT,
           generationConfig: {
             responseMimeType: "application/json"
           }
@@ -230,7 +241,7 @@ export async function POST(req) {
       // Fallback model: gemini-2.5-flash
       const fallbackModel = genAI.getGenerativeModel({ 
           model: "models/gemini-2.5-flash",
-          systemInstruction: SYSTEM_CONTEXT,
+          systemInstruction: FULL_SYSTEM_CONTEXT,
           generationConfig: {
             responseMimeType: "application/json"
           }
