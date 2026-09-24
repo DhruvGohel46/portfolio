@@ -1,5 +1,6 @@
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import BackgroundGrid from '@/components/ui/BackgroundGrid';
 import './globals.css';
 
 const inter = Inter({
@@ -22,8 +23,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased selection:bg-accent selection:text-white overflow-x-hidden min-h-screen bg-grid-pattern`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased selection:bg-accent selection:text-white overflow-x-hidden min-h-screen relative`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <BackgroundGrid />
           {children}
         </ThemeProvider>
       </body>

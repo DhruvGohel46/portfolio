@@ -4,12 +4,13 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoTerminalOutline, IoCloseOutline, IoSend, IoSparklesOutline, IoExpandOutline, IoContractOutline } from 'react-icons/io5';
 import ReactMarkdown from 'react-markdown';
+import ParticleOrb from './ParticleOrb';
 
 export default function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'system', content: 'VIZO COGNITIVE AGENT INITIALIZED. Accessing portfolio network. Ask me anything about Dhruv\'s engineering background, projects, and hackathons.' }
+    { role: 'system', content: 'COGNITIVE AGENT INITIALIZED. Accessing portfolio network. Ask me anything about Dhruv\'s engineering background, projects, and hackathons.' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -143,46 +144,54 @@ export default function AIAssistant() {
     <>
       <AnimatePresence>
         {!isOpen && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ 
-              opacity: 1,
+              opacity: 1, 
               scale: 1,
-              y: [0, -10, 0] // snappy and visible bobbing float
+              y: [0, -8, 0] // gentle organic float
             }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            exit={{ opacity: 0, scale: 0.8, y: 15 }}
             transition={{
               opacity: { duration: 0.35 },
               scale: { type: "spring", stiffness: 300, damping: 25 },
               y: {
                 repeat: Infinity,
-                duration: 1.2, // faster and more energetic loop
+                duration: 2.8,
                 ease: "easeInOut"
               }
             }}
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.96 }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.94 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-[100px] sm:bottom-8 left-6 sm:left-8 px-4 py-2 sm:px-9 sm:py-4 bg-white/90 dark:bg-zinc-950/90 hover:bg-zinc-50 dark:hover:bg-zinc-900/90 text-foreground border-2 border-accent/50 dark:border-accent/60 hover:border-accent rounded-full shadow-[0_0_20px_rgba(99,102,241,0.15)] dark:shadow-[0_0_25px_rgba(99,102,241,0.35)] hover:shadow-[0_0_35px_rgba(99,102,241,0.6)] flex items-center gap-3 sm:gap-4 z-50 group transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-md"
+            className="fixed bottom-[92px] sm:bottom-8 left-4 sm:left-8 z-50 group cursor-pointer flex items-center select-none"
+            role="button"
+            aria-label="Open AI Cognitive Agent"
           >
-            {/* Glowing Accent Aura on Hover */}
-            <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            
-            {/* Glowing Icon (Indigo themed sparkles) */}
-            <div className="relative flex items-center justify-center w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-accent/10 border border-accent/25 group-hover:bg-accent/20 transition-colors flex-shrink-0">
-              <IoSparklesOutline className="text-base sm:text-xl text-accent animate-pulse" />
-              <div className="absolute inset-0 blur-md bg-accent/15 animate-pulse rounded-full" />
+            {/* 3D Animated Particle Structure (pure, borderless, enlarged) */}
+            <div className="relative flex items-center justify-center">
+              {/* Diffuse atmospheric aura on hover */}
+              <div className="absolute inset-0 rounded-full bg-accent/25 blur-2xl opacity-0 group-hover:opacity-100 group-hover:scale-140 transition-all duration-500 pointer-events-none" />
+              
+              {/* 3D Canvas Orb - Responsive enlarged size */}
+              <div className="hidden sm:block">
+                <ParticleOrb size={132} />
+              </div>
+              <div className="sm:hidden">
+                <ParticleOrb size={96} />
+              </div>
             </div>
 
-            {/* Labels */}
-            <div className="flex flex-col items-start leading-none z-10 font-mono text-left">
-              <span className="hidden sm:inline text-[10px] tracking-[0.25em] text-accent/80 font-bold uppercase">PORTFOLIO_QUERY_CORE</span>
-              <span className="text-xs sm:text-base font-bold sm:font-black tracking-wider sm:tracking-wide text-foreground mt-0 sm:mt-1.5 select-none">
-                <span className="sm:hidden">ASK AI</span>
-                <span className="hidden sm:inline">ASK COGNITIVE AGENT</span>
-              </span>
+            {/* Hover-Only Title Pill (smooth reveal on hover) */}
+            <div className="ml-3 pointer-events-none opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out">
+              <div className="bg-background/95 dark:bg-zinc-950/95 backdrop-blur-xl border border-border group-hover:border-accent/60 rounded-xl px-3.5 py-2 shadow-2xl shadow-black/30 flex items-center gap-2 whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+                <span className="text-xs font-mono font-bold tracking-wider text-foreground uppercase">
+                  ASK COGNITIVE AGENT
+                </span>
+              </div>
             </div>
-          </motion.button>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -202,13 +211,13 @@ export default function AIAssistant() {
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border bg-muted/40 backdrop-blur-md">
               <div className="flex items-center gap-3">
-                <div className="relative w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
-                  <IoTerminalOutline className="text-lg text-accent animate-pulse" />
+                <div className="relative w-9 h-9 rounded-lg bg-background border border-border flex items-center justify-center overflow-hidden">
+                  <ParticleOrb size={32} />
                   <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-500 border border-background animate-ping" />
                   <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-500 border border-background" />
                 </div>
                 <div>
-                  <h3 className="font-mono font-bold text-sm leading-tight text-foreground tracking-wide">VIZO COGNITIVE AGENT</h3>
+                  <h3 className="font-mono font-bold text-sm leading-tight text-foreground tracking-wide">COGNITIVE AGENT</h3>
                   <div className="text-[9px] font-mono tracking-widest text-accent uppercase font-bold">Encrypted Database Query Console</div>
                 </div>
               </div>
@@ -252,7 +261,7 @@ export default function AIAssistant() {
                   }`}>
                     {msg.role === 'system' && (
                       <div className="text-[8px] font-mono text-accent/80 font-bold mb-2 uppercase tracking-[0.2em] border-b border-border/40 pb-1">
-                        <span>[VIZO_AGENT_OUTPUT]</span>
+                        <span>[AGENT_OUTPUT]</span>
                       </div>
                     )}
                     <div className="max-w-none break-words">

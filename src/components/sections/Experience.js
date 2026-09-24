@@ -46,7 +46,7 @@ export default function Experience() {
           <div className="mb-6">
             <SystemTag label="TIMELINE" value="FIELD_OPERATIONS" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-display-lg font-bold tracking-tight">
             Experience & Output.
           </h2>
         </header>

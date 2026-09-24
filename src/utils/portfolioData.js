@@ -82,7 +82,7 @@ export const experiences = [
     role: 'Python Engineering Intern',
     period: '2024 - PRESENT',
     desc: 'Translating tactical logic into secure, production-ready system tools. Focused on GUI development (PyQt6) and thread-safe API architectures.',
-    details: ['Vizo Secure Voice System', 'Tactical Password Engine', 'API Audit Integration'],
+    details: ['Secure Voice Command System', 'Tactical Password Engine', 'API Audit Integration'],
     icon: IoBriefcaseOutline
   },
   {

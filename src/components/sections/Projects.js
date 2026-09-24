@@ -176,7 +176,7 @@ export default function Projects() {
             <div className="mb-6">
               <SystemTag label="DIRECTORY" value="RESEARCH_OUTPUT" />
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">
+            <h2 className="text-display-lg font-bold tracking-tight">
               Featured <br /> Systems.
             </h2>
           </div>

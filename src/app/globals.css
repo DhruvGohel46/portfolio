@@ -37,6 +37,16 @@
     @apply ring-1 ring-border;
   }
   
+  .bg-dot-matrix {
+    background-size: 24px 24px;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.14) 1px, transparent 1px);
+  }
+  
+  .dark .bg-dot-matrix {
+    background-size: 24px 24px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  }
+  
   .bg-grid-pattern {
     background-size: 50px 50px;
     background-image: 

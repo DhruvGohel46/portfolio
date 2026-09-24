@@ -36,7 +36,7 @@ export default function Achievements() {
           <div className="mb-6">
             <SystemTag label="RECORDS" value="CERTIFICATIONS" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-display-lg font-bold tracking-tight">
             Qualifications.
           </h2>
         </header>

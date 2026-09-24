@@ -9,18 +9,18 @@ export default function Contact() {
   return (
     <section id="contact" className="py-16 sm:py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-[2fr_3fr] gap-12 lg:gap-20 items-center">
           
           <div>
             <div className="mb-6">
               <SystemTag label="COMMUNICATION" value="SECURE_CHANNEL" />
             </div>
             
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-8">
+            <h2 className="text-display-lg font-bold tracking-tight mb-8">
               Initiate <br /> Connection.
             </h2>
             
-            <p className="text-muted-foreground text-lg mb-12 leading-relaxed">
+            <p className="text-muted-foreground text-lg mb-12 leading-relaxed max-w-[60ch]">
               Open to security consulting, full-stack collaborations, and research opportunities. establishing a secure handshake via the terminal below.
             </p>
             

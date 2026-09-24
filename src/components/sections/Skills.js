@@ -43,7 +43,7 @@ export default function Skills() {
           <div className="mb-6">
             <SystemTag label="CAPABILITY" value="CORE_STACK" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-display-lg font-bold tracking-tight">
             Technical Arsenal.
           </h2>
         </header>

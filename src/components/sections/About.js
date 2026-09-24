@@ -12,18 +12,18 @@ export default function About() {
           <div className="mb-6">
             <SystemTag label="IDENT_FILE" value="DHRUV.JSON" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-display-lg font-bold tracking-tight">
             Mission & Architecture.
           </h2>
         </header>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start border-t border-border pt-12">
+        <div className="grid lg:grid-cols-[2fr_3fr] gap-8 lg:gap-16 items-start border-t border-border pt-12">
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6 text-lg text-muted-foreground leading-relaxed"
+            className="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-[60ch]"
           >
             <p>
               I am a <span className="font-semibold text-foreground">Security Researcher</span> and Computer Engineering student at GTU-SET, driven by a deep fascination with how systems break and how to make them unbreakable. My approach combines the curiosity of a researcher with the pragmatism of an engineer.
