@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
-import { IoMoonOutline, IoSunnyOutline, IoGridOutline, IoPersonOutline, IoHardwareChipOutline, IoBriefcaseOutline, IoCodeSlashOutline } from 'react-icons/io5';
+import { IoMoonOutline, IoSunnyOutline, IoGridOutline, IoPersonOutline, IoHardwareChipOutline, IoBriefcaseOutline, IoCodeSlashOutline, IoTrophyOutline } from 'react-icons/io5';
 import CommandPalette from '../ui/CommandPalette';
 
 const navLinks = [
   { name: 'About', href: '#about', icon: IoPersonOutline },
   { name: 'Skills', href: '#skills', icon: IoHardwareChipOutline },
-  { name: 'Exp', href: '#experience', icon: IoBriefcaseOutline },
+  { name: 'Intern', href: '#internships', icon: IoBriefcaseOutline },
+  { name: 'Hacks', href: '#hackathons', icon: IoTrophyOutline },
   { name: 'Projects', href: '#projects', icon: IoCodeSlashOutline },
 ];
 
@@ -87,7 +88,7 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="flex flex-col items-center justify-center w-16 h-12 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-all active:scale-95"
+                className="flex flex-col items-center justify-center flex-1 h-12 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-all active:scale-95"
               >
                 <Icon className="text-xl mb-1" />
                 <span className="text-[10px] font-medium tracking-tight">{link.name}</span>

@@ -30,7 +30,7 @@ export default function Contact() {
                   <IoMailOutline />
                 </div>
                 <div>
-                  <div className="text-[10px] font-mono text-muted-foreground tracking-widest uppercase mb-1">ENCRYPTED_EMAIL</div>
+                  <div className="text-xs font-semibold text-muted-foreground tracking-wider uppercase mb-1">ENCRYPTED_EMAIL</div>
                   <div className="text-foreground font-medium">dhruv@example.com</div>
                 </div>
               </div>
@@ -40,7 +40,7 @@ export default function Contact() {
                   <IoLocationOutline />
                 </div>
                 <div>
-                  <div className="text-[10px] font-mono text-muted-foreground tracking-widest uppercase mb-1">NODE_LOCATION</div>
+                  <div className="text-xs font-semibold text-muted-foreground tracking-wider uppercase mb-1">NODE_LOCATION</div>
                   <div className="text-foreground font-medium">Rajkot, Gujarat, IN</div>
                 </div>
               </div>
@@ -49,14 +49,14 @@ export default function Contact() {
 
           <div className="bg-background border border-border rounded-xl p-8 shadow-sm">
             <div className="flex items-center justify-between mb-8 pb-4 border-b border-border">
-              <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">TRANSMISSION_FORM</span>
+              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">TRANSMISSION_FORM</span>
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             </div>
             
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">USER_IDENTITY</label>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">USER_IDENTITY</label>
                   <input 
                     type="text" 
                     placeholder="Name" 
@@ -64,7 +64,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">RETURN_ADDR</label>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">RETURN_ADDR</label>
                   <input 
                     type="email" 
                     placeholder="Email" 
@@ -73,7 +73,7 @@ export default function Contact() {
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">PAYLOAD_JSON</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">PAYLOAD_JSON</label>
                 <textarea 
                   rows="5" 
                   placeholder="Message content..." 

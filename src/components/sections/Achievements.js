@@ -2,13 +2,15 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  IoStarOutline, 
-  IoRibbonOutline, 
-  IoCodeSlashOutline, 
-  IoCloudOutline, 
-  IoCloseOutline, 
-  IoEyeOutline 
+import {
+  IoStarOutline,
+  IoRibbonOutline,
+  IoCodeSlashOutline,
+  IoCloudOutline,
+  IoCloseOutline,
+  IoEyeOutline,
+  IoSparklesOutline,
+  IoGlobeOutline
 } from 'react-icons/io5';
 import SystemTag from '../ui/SystemTag';
 
@@ -19,6 +21,8 @@ const iconMap = {
   ribbon: IoRibbonOutline,
   cloud: IoCloudOutline,
   code: IoCodeSlashOutline,
+  sparkles: IoSparklesOutline,
+  globe: IoGlobeOutline,
 };
 
 const achievements = achievementsData.map(ach => ({
@@ -63,18 +67,18 @@ export default function Achievements() {
                     <Icon />
                   </div>
                   <h3 className="font-bold text-lg mb-2 group-hover:text-accent transition-colors duration-300">{item.title}</h3>
-                  <div className="text-[10px] font-mono text-muted-foreground tracking-widest uppercase mb-6">
+                  <div className="text-xs font-semibold text-muted-foreground tracking-wide uppercase mb-6">
                     {item.institution}
                   </div>
                   
                   {/* Hover Eye Overlay Indicator */}
-                  <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-muted-foreground flex items-center gap-1.5 text-xs font-mono">
+                  <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-foreground flex items-center gap-1.5 text-xs font-semibold">
                     <IoEyeOutline className="text-base" /> VIEW
                   </div>
 
                   <div className="mt-auto pt-4 border-t border-border w-full flex items-center justify-between z-10">
-                    <span className="text-[10px] font-mono text-muted-foreground uppercase">SCORE_OUTPUT</span>
-                    <span className="text-xs font-bold text-foreground">
+                    <span className="text-xs font-semibold text-muted-foreground uppercase">SCORE_OUTPUT</span>
+                    <span className="text-xs font-bold text-foreground px-2 py-0.5 rounded bg-muted border border-border">
                       {item.score}
                     </span>
                   </div>

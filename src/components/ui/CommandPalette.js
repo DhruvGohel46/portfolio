@@ -9,9 +9,10 @@ export default function CommandPalette({ isOpen, onClose }) {
     { label: 'Home', href: '#home', id: '01' },
     { label: 'About', href: '#about', id: '02' },
     { label: 'Skills', href: '#skills', id: '03' },
-    { label: 'Experience', href: '#experience', id: '04' },
-    { label: 'Projects', href: '#projects', id: '05' },
-    { label: 'Contact', href: '#contact', id: '06' },
+    { label: 'Internships', href: '#internships', id: '04' },
+    { label: 'Hackathons', href: '#hackathons', id: '05' },
+    { label: 'Projects', href: '#projects', id: '06' },
+    { label: 'Contact', href: '#contact', id: '07' },
   ];
 
   return (

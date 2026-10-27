@@ -55,7 +55,7 @@ export default function Projects() {
             className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
-          <div className="absolute top-4 left-4 bg-background border border-border px-3 py-1 rounded text-[10px] font-mono tracking-widest uppercase">
+          <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-md border border-border px-3 py-1 rounded-md text-xs font-semibold tracking-wider uppercase text-foreground shadow-sm">
             {project.category}
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function Projects() {
           
           <div className="flex flex-wrap gap-2 mb-8">
             {project.tech.map(t => (
-              <span key={t} className="px-2 py-1 bg-muted rounded text-xs font-mono text-muted-foreground border border-border">
+              <span key={t} className="px-2.5 py-1 bg-muted/90 rounded-md text-xs font-medium text-foreground border border-border">
                 {t}
               </span>
             ))}
@@ -109,7 +109,7 @@ export default function Projects() {
               </button>
             )}
             {!deployment && !github && !youtubeWin10 && !youtubeWin11 && !project.experienceMatch && (
-              <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
+              <span className="text-xs font-semibold text-muted-foreground tracking-wider uppercase">
                 [CLASSIFIED_INTERNAL]
               </span>
             )}

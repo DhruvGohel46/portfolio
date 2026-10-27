@@ -15,7 +15,7 @@ export default function Footer() {
           <div className="text-xl font-bold tracking-tight text-foreground mb-1">
             Dhruv<span className="text-accent">.</span>
           </div>
-          <p className="text-muted-foreground text-[10px] font-mono tracking-widest uppercase">
+          <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
             SEC_ENGINEER // RESEARCHER
           </p>
         </div>

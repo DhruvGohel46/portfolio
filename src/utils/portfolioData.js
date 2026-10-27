@@ -1,10 +1,12 @@
-import { 
-  IoBriefcaseOutline, 
-  IoFlashOutline, 
-  IoHardwareChipOutline, 
-  IoTrophyOutline, 
-  IoChatbubblesOutline, 
-  IoMedalOutline 
+import {
+  IoBriefcaseOutline,
+  IoFlashOutline,
+  IoHardwareChipOutline,
+  IoTrophyOutline,
+  IoChatbubblesOutline,
+  IoMedalOutline,
+  IoPeopleOutline,
+  IoShieldCheckmarkOutline
 } from 'react-icons/io5';
 
 export const projects = [
@@ -21,14 +23,24 @@ export const projects = [
     youtubeWin11: 'https://youtu.be/ztY4NmsZrxs?si=vpc0xnnylyn6l-6z'
   },
   {
+    id: 'sardet',
+    title: 'SARDET',
+    category: 'AI / COMPUTER VISION',
+    desc: 'End-to-end satellite intelligence pipeline for ship and aircraft detection, fine-grained classification, and cross-date geospatial tracking. 4 production deep learning models (YOLO11-OBB detectors + ConvNeXt classifiers) in a 13-stage pipeline from STAC search to tracked output. 93.05% mAP@50 optical, 79.28% SAR, 98.73% aircraft accuracy.',
+    tech: ['PyTorch', 'YOLO11-OBB', 'ConvNeXt', 'FastAPI', 'Rasterio', 'GeoPandas'],
+    image: '/projects/SARDET.png',
+    link: '#',
+    github: 'https://github.com/DhruvGohel46/SARDET'
+  },
+  {
     id: 'infoos-pos',
     title: 'InfoOS POS',
     category: 'SYS ARCHITECTURE',
-    desc: 'High-performance, offline-first POS & inventory system with zero latency and thermal automation for retail environments.',
-    tech: ['React', 'Flask', 'SQLite', 'RestAPI'],
+    desc: 'Zero-latency, 100% offline-first POS and retail operations suite. Live order drag-to-merge/settlement, real-time analytics, staff payroll, and an autonomous multi-agent AI system (7 domain agents, state-graph orchestration, human-in-the-loop approval) with 0-token fast-path routing and full audit trail.',
+    tech: ['React', 'Electron', 'Flask', 'SQLite', 'AgentGraph', 'Multi-LLM', 'ONNX'],
     image: '/projects/InfoOS.png',
     link: '#',
-    github: 'https://github.com/DhruvGohel46/Rebill'
+    github: 'https://github.com/DhruvGohel46/infoOS'
   },
   {
     id: 'railqr-logistics',
@@ -60,16 +72,6 @@ export const projects = [
     tech: ['Django', 'PostgreSQL', 'Tailwind', 'DRF'],
     image: '/projects/COSO.png',
     link: '#',
-    github: '#'
-  },
-  {
-    id: 'falak-al-buraimi-salon',
-    title: 'Falak Al Buraimi Salon',
-    category: 'WEB DEV',
-    desc: 'Freelance responsive salon website for a client in Oman — animated offers, service cards, Google Maps embed. 90+ Lighthouse score.',
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind'],
-    image: '/projects/Falak Al Buraimi Beauty Salon.png',
-    link: 'https://falak-al-buraimi-beauty-saloon.netlify.app/',
     github: '#'
   }
 ];
@@ -143,8 +145,38 @@ export const experiences = [
     details: ['RailQR Logistics', 'Python/Ollama', 'QR Metrics', 'React', 'Local AI Models'],
     projectMatch: 'railqr-logistics',
     icon: IoMedalOutline
+  },
+  {
+    type: 'INTERNSHIP',
+    id: 'happieloop',
+    title: 'Happieloop Technologies',
+    role: 'Cybersecurity Intern',
+    period: 'MAY - JUN 2026',
+    desc: 'Completed a one-month Cybersecurity Internship at Happieloop Technologies (18 May 2026 to 17 June 2026), certified by the company.',
+    details: ['Cybersecurity', 'Certified Internship', '18 May - 17 Jun 2026'],
+    icon: IoShieldCheckmarkOutline
+  },
+  {
+    type: 'LEADERSHIP',
+    id: 'fusion-fest',
+    title: 'GTU-SET',
+    role: 'Event Coordinator — Fusion Fest 2025',
+    period: '2025',
+    desc: 'Led Fusion Fest 2025, coordinating technical and cultural events and managing logistics and team scheduling for the university festival.',
+    details: ['Event Management', 'Team Coordination', 'Logistics'],
+    icon: IoPeopleOutline
   }
 ];
+
+export const internships = experiences.filter(
+  (e) => e.type === 'INTERNSHIP' || e.type === 'LEADERSHIP'
+);
+
+// Newest first
+const hackathonOrder = ['railvision', 'sahaay', 'agentic-quiz', 'wofo', 'sih'];
+export const hackathons = experiences
+  .filter((e) => e.type === 'HACKATHON')
+  .sort((a, b) => hackathonOrder.indexOf(a.id) - hackathonOrder.indexOf(b.id));
 
 export const skills = [
   {
@@ -170,7 +202,7 @@ export const achievements = [
     title: 'NPTEL Python — Top 5%',
     institution: 'IIT Madras',
     score: '94% ELITE',
-    image: '/Achivments/joy of python.png',
+    image: '/Achivments/Joy of python.png',
     iconName: 'star'
   },
   {
@@ -178,7 +210,7 @@ export const achievements = [
     title: 'Oracle Data Platform',
     institution: 'ORACLE CERTIFIED',
     score: 'ASSOCIATE',
-    image: '/Achivments/Oracle Foundation Associate.jpg',
+    image: '/Achivments/Oracle Foundation Associate.png',
     iconName: 'ribbon'
   },
   {
@@ -194,7 +226,39 @@ export const achievements = [
     title: 'NPTEL Java',
     institution: 'IIT KHARAGPUR',
     score: '85% ELITE',
-    image: '/Achivments/nptel_Java.jpg',
+    image: '/Achivments/nptel_Java.png',
+    iconName: 'code'
+  },
+  {
+    id: 'happieloop-internship',
+    title: 'Cybersecurity Internship',
+    institution: 'HAPPIELOOP TECHNOLOGIES',
+    score: 'COMPLETED',
+    image: '/Achivments/happieloop-internship.png',
+    iconName: 'ribbon'
+  },
+  {
+    id: 'udemy-agentic-ai',
+    title: 'Full Stack GenAI & Agentic AI',
+    institution: 'UDEMY — HITESH CHOUDHARY, PIYUSH GARG',
+    score: '32.5 HRS COMPLETED',
+    image: '/Achivments/udemy-agentic-ai.png',
+    iconName: 'sparkles'
+  },
+  {
+    id: 'cisco-networking',
+    title: 'Networking Basics',
+    institution: 'CISCO NETWORKING ACADEMY',
+    score: 'CERTIFIED',
+    image: '/Achivments/cisco-networking-basics.png',
+    iconName: 'globe'
+  },
+  {
+    id: 'langsmith-fleet',
+    title: 'Quickstart: LangSmith Fleet',
+    institution: 'LANGCHAIN',
+    score: 'CERTIFIED',
+    image: '/Achivments/langsmith-fleet.png',
     iconName: 'code'
   }
 ];

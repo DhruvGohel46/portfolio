@@ -17,42 +17,45 @@ import {
 } from 'react-icons/io5';
 import SystemTag from '../ui/SystemTag';
 
-import { experiences } from '@/utils/portfolioData';
-
-export default function Experience() {
+export default function ExperienceSection({
+  id,
+  tagLabel = 'TIMELINE',
+  tagValue,
+  title,
+  items,
+  muted = false,
+}) {
   const [expanded, setExpanded] = useState(null);
 
   useEffect(() => {
     const handleHighlight = (e) => {
-      if (e.detail && e.detail.id) {
-        setExpanded(e.detail.id);
-        setTimeout(() => {
-          const el = document.getElementById(e.detail.id);
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }, 100);
-      }
+      const targetId = e.detail && e.detail.id;
+      if (!targetId || !items.some((item) => item.id === targetId)) return;
+      setExpanded(targetId);
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
     };
     window.addEventListener('highlight-experience', handleHighlight);
     return () => window.removeEventListener('highlight-experience', handleHighlight);
-  }, []);
+  }, [items]);
 
   return (
-    <section id="experience" className="py-16 sm:py-32 px-6">
+    <section id={id} className={`py-16 sm:py-32 px-6 ${muted ? 'bg-muted/30' : ''}`}>
       <div className="max-w-7xl mx-auto">
-        
+
         <header className="mb-12 sm:mb-20">
           <div className="mb-6">
-            <SystemTag label="TIMELINE" value="FIELD_OPERATIONS" />
+            <SystemTag label={tagLabel} value={tagValue} />
           </div>
-          <h2 className="text-display-lg font-bold tracking-tight">
-            Experience & Output.
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            {title}
           </h2>
         </header>
  
         <div className="flex flex-col gap-4">
-          {experiences.map((exp, index) => {
+          {items.map((exp, index) => {
             const isExpanded = expanded === exp.id;
             const Icon = exp.icon;
 
@@ -80,10 +83,10 @@ export default function Experience() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
-                          <span className="text-[9px] sm:text-[10px] font-mono font-bold tracking-widest text-foreground bg-background px-2 py-0.5 rounded border border-border">
+                          <span className="text-xs font-semibold tracking-wide uppercase text-foreground bg-muted px-2.5 py-1 rounded-md border border-border shadow-sm">
                             {exp.type}
                           </span>
-                          <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
+                          <span className="text-xs font-medium text-muted-foreground">
                             {exp.period}
                           </span>
                         </div>
@@ -113,7 +116,7 @@ export default function Experience() {
                           </p>
                           <div className="flex flex-wrap gap-2 mb-6">
                             {exp.details.map(detail => (
-                              <span key={detail} className="px-2 py-1 sm:px-3 sm:py-1.5 rounded bg-background border border-border text-[9px] sm:text-[10px] font-mono tracking-widest uppercase text-muted-foreground">
+                              <span key={detail} className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-md bg-muted border border-border text-xs font-medium text-foreground">
                                 {detail}
                               </span>
                             ))}

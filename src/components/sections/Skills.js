@@ -98,13 +98,13 @@ export default function Skills() {
                   >
                     <div className="mb-8 pb-4 border-b border-border flex justify-between items-end">
                       <h3 className="text-2xl font-bold">{cat.title}</h3>
-                      <span className="text-xs font-mono text-muted-foreground uppercase">MODULE_READY</span>
+                      <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-muted border border-border text-foreground uppercase">MODULE_READY</span>
                     </div>
                     
                     <ul className="space-y-4 flex-grow">
                       {cat.skills.map((skill, index) => (
                         <li key={skill} className="flex items-center gap-4 group">
-                          <span className="text-[10px] font-mono text-muted-foreground w-6 text-right group-hover:text-foreground transition-colors">
+                          <span className="text-xs font-semibold text-muted-foreground w-6 text-right group-hover:text-foreground transition-colors">
                             0{index + 1}
                           </span>
                           <span className="w-px h-4 bg-border group-hover:bg-accent transition-colors" />

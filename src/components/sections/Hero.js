@@ -81,7 +81,7 @@ export default function Hero() {
             <img
               src="/profile/profile.png"
               alt="Dhruv Gohel"
-              className="relative z-10 max-h-full w-auto object-contain filter grayscale contrast-120 brightness-95 group-hover:grayscale-0 transition-all duration-1000 [mask-image:linear-gradient(to_bottom,black_75%,transparent_98%)] drop-shadow-[0_25px_50px_rgba(0,0,0,0.9)] drop-shadow-[0_0_35px_rgba(99,102,241,0.25)]"
+              className="relative z-10 max-h-full w-auto object-contain filter grayscale contrast-120 brightness-95 group-hover:grayscale-0 transition-all duration-1000 [mask-image:radial-gradient(ellipse_80%_80%_at_50%_45%,black_45%,transparent_98%)] drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)] drop-shadow-[0_0_25px_rgba(99,102,241,0.2)]"
             />
           </motion.div>
 
@@ -107,14 +107,14 @@ export default function Hero() {
             >
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-mono text-xs font-bold tracking-widest uppercase hover:bg-accent hover:text-white transition-all shadow-lg cursor-pointer group"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-sans text-xs sm:text-sm font-semibold tracking-wide uppercase hover:bg-accent hover:text-white transition-all shadow-lg cursor-pointer group"
               >
                 <span>Explore Systems</span>
                 <IoArrowForwardOutline className="text-sm group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#about"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border hover:border-foreground/50 font-mono text-xs font-bold tracking-widest uppercase text-muted-foreground hover:text-foreground transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border hover:border-foreground/50 font-sans text-xs sm:text-sm font-semibold tracking-wide uppercase text-muted-foreground hover:text-foreground transition-all cursor-pointer"
               >
                 <span>Mission Dossier</span>
               </a>
